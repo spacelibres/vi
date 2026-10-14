@@ -25,6 +25,7 @@ import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 SECRET = os.environ.get("VI_WEBHOOK_SECRET", "").strip()
+SECRET_FILE = os.environ.get("VI_WEBHOOK_SECRET_FILE", "/etc/vi-webhook.env")
 HOST = os.environ.get("VI_WEBHOOK_HOST", "127.0.0.1")
 PORT = int(os.environ.get("VI_WEBHOOK_PORT", "9100"))
 BRANCH = os.environ.get("VI_BRANCH", "main")
@@ -41,13 +42,26 @@ def log(msg):
     sys.stderr.flush()
 
 
+def current_secret():
+    """每次请求时从密钥文件读取，更换密钥无需重启服务。"""
+    try:
+        with open(SECRET_FILE, "r", encoding="utf-8") as fh:
+            for line in fh:
+                if line.startswith("VI_WEBHOOK_SECRET="):
+                    return line.split("=", 1)[1].strip()
+    except OSError:
+        pass
+    return SECRET
+
+
 def verify_signature(headers, body):
-    if not SECRET:
+    secret = current_secret()
+    if not secret:
         return True
     sig = headers.get("X-Hub-Signature-256", "")
     if not sig.startswith("sha256="):
         return False
-    mac = hmac.new(SECRET.encode(), body, hashlib.sha256).hexdigest()
+    mac = hmac.new(secret.encode(), body, hashlib.sha256).hexdigest()
     return hmac.compare_digest("sha256=" + mac, sig)
 
 
@@ -152,8 +166,8 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
-    if not SECRET:
-        log("警告：未设置 VI_WEBHOOK_SECRET，将不校验签名（不推荐）")
+    if not current_secret():
+        log("警告：未找到 Webhook 密钥（%s），将不校验签名（不推荐）" % SECRET_FILE)
     srv = ThreadingHTTPServer((HOST, PORT), Handler)
     log("监听 http://%s:%d（branch=%s deploy_tags=%s cmd=%s）"
         % (HOST, PORT, BRANCH, DEPLOY_TAGS, DEPLOY_CMD))
