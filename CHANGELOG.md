@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.14 - 2026-10-14
+
+- Add a light/dark appearance choice (follow system / light / dark) that adapts the whole site, including `color-scheme`, the browser theme color and the recolored SVG logos.
+- Separate the page base from the brand deep panels (`--panel`, `--chip`, `--photo-base`), so dark panels and reverse logo assets stay correct in both modes.
+- Add the four new UI strings (跟随系统 / 浅色 / 深色 / 外观) to all 21 translations.
+- Verify: `npm test` and `npm run check` pass at 1.5.14.
+
 ## 1.5.13 - 2026-10-14
 
 - Fix the sticky theme bar jitter: its offset is now measured from the real top bar height (`--topbar-h`) instead of a hard-coded `66px`, so it no longer slides under the frosted top bar while scrolling.
