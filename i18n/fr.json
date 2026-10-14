@@ -197,7 +197,13 @@
     "邮件通讯页头": "En-tête de newsletter",
     "邻近色": "Analogues",
     "邻近色 / 光谱渐进": "Analogues / progression spectrale",
-    "错误 / ERROR": "Erreur / ERROR"
+    "错误 / ERROR": "Erreur / ERROR",
+    "轨道诞生，30 秒品牌片头。": "Naissance de l’orbite. Une introduction de marque de 30 secondes.",
+    "从一颗完整星球，到卫星轨道与探索航迹，最后收束为 spacelibre 标志。MP4 采用电光轨道固定配色；矢量预览随全站配色变化。": "Une planète complète forme son orbite satellite, s’ouvre en trajectoires d’exploration et se transforme en logo spacelibre. Le MP4 utilise la palette fixe Orbite électrique ; l’aperçu vectoriel suit la palette du site.",
+    "打开片头播放器 ↗": "Ouvrir le lecteur d’introduction ↗",
+    "片头": "Introduction",
+    "轨道诞生，30 秒 3D 片头。": "Naissance de l’orbite. Une introduction 3D de 30 secondes.",
+    "抵近星球圆环，掠过轨道边缘，穿行探索航迹，最终回到完整 spacelibre 标志。3D 预览与视频导出跟随当前配色。": "Approchez l’anneau de la planète, frôlez le bord orbital, traversez les trajectoires d’exploration et revenez au logo spacelibre complet. L’aperçu 3D et l’exportation vidéo suivent la palette actuelle."
   },
   "attr": {
     "24 像素标志": "Logo 24 pixels",
@@ -324,6 +330,8 @@
     "轨道线条": "Lignes orbitales",
     "辅色关系": "Relation des couleurs secondaires",
     "邮件签名": "Signature e-mail",
-    "邮件通讯页头": "En-tête de newsletter"
+    "邮件通讯页头": "En-tête de newsletter",
+    "spacelibre 片头播放器": "Lecteur d’introduction spacelibre",
+    "spacelibre 3D 片头播放器": "Lecteur d’introduction 3D spacelibre"
   }
 }

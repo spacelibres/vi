@@ -1,0 +1,36 @@
+{
+  "title": "Orbit Birth 3D",
+  "renderer": "Three.js 0.186.1 / WebGL",
+  "palette": "01-electric-orbit",
+  "originalAudio": true,
+  "verifiedFullDecode": true,
+  "localeCount": 22,
+  "audioRMS": 0.09079120308160782,
+  "audioPeak": 0.28925976157188416,
+  "media": [
+    {
+      "file": "spacelibre-orbit-birth-3d-1080p.mp4",
+      "sha256": "358164bd57cc8681c50512807dfff7790d9bca1c2943bd638e80a70f38f9d5a5",
+      "bytes": 14584969,
+      "durationSeconds": 30,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "frameCount": 900,
+      "videoCodec": "H.264",
+      "audioCodec": "AAC stereo"
+    },
+    {
+      "file": "spacelibre-orbit-birth-3d-silent-1080p.mp4",
+      "sha256": "6402b8d6ed8f8fb832325a1d9e7359eaa187fb78d9a5fc178823cf93ec3c70c5",
+      "bytes": 13854629,
+      "durationSeconds": 30,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "frameCount": 900,
+      "videoCodec": "H.264",
+      "audioCodec": null
+    }
+  ]
+}

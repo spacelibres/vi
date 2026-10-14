@@ -56,3 +56,5 @@ body{background:radial-gradient(ellipse at 100% 0,rgba(var(--theme-primary-rgb,0
  nav a{padding:16px 0;border-bottom:1px solid var(--line)}
  nav a:last-child{border-bottom:0}
 }
+
+.motion-frame{display:block;width:100%;height:960px;border:1px solid var(--line);border-radius:16px;background:var(--card);margin:24px 0}@media(max-width:720px){.motion-frame{height:720px}}

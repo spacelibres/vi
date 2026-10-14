@@ -1,6 +1,6 @@
 {
   "name": "spacelibre-vi",
-  "version": "1.5.21",
+  "version": "1.5.22",
   "private": true,
   "description": "spacelibre visual identity website and reusable design standard",
   "scripts": {
@@ -12,6 +12,8 @@
     "node": ">=20"
   },
   "devDependencies": {
-    "linkedom": "^0.18.13"
+    "linkedom": "^0.18.13",
+    "sharp": "0.35.5",
+    "three": "0.186.1"
   }
 }

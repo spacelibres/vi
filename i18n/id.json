@@ -197,7 +197,13 @@
     "邮件通讯页头": "Kepala Buletin Email",
     "邻近色": "Warna Analog",
     "邻近色 / 光谱渐进": "Warna Analog / Gradasi Spektrum",
-    "错误 / ERROR": "Kesalahan / ERROR"
+    "错误 / ERROR": "Kesalahan / ERROR",
+    "轨道诞生，30 秒品牌片头。": "Kelahiran Orbit. Intro merek berdurasi 30 detik.",
+    "从一颗完整星球，到卫星轨道与探索航迹，最后收束为 spacelibre 标志。MP4 采用电光轨道固定配色；矢量预览随全站配色变化。": "Planet yang utuh membentuk orbit satelitnya, terbuka menjadi lintasan eksplorasi, lalu berubah menjadi logo spacelibre. MP4 menggunakan palet Orbit Listrik yang tetap; pratinjau vektor mengikuti palet situs.",
+    "打开片头播放器 ↗": "Buka pemutar intro ↗",
+    "片头": "Intro",
+    "轨道诞生，30 秒 3D 片头。": "Kelahiran Orbit. Intro 3D berdurasi 30 detik.",
+    "抵近星球圆环，掠过轨道边缘，穿行探索航迹，最终回到完整 spacelibre 标志。3D 预览与视频导出跟随当前配色。": "Dekati cincin planet, lintasi tepi orbit, telusuri lintasan eksplorasi, lalu kembali ke logo spacelibre yang lengkap. Pratinjau 3D dan ekspor video mengikuti palet saat ini."
   },
   "attr": {
     "24 像素标志": "Logo 24 piksel",
@@ -324,6 +330,8 @@
     "轨道线条": "Garis Orbit",
     "辅色关系": "Hubungan Warna Pendukung",
     "邮件签名": "Tanda Tangan Email",
-    "邮件通讯页头": "Kepala Buletin Email"
+    "邮件通讯页头": "Kepala Buletin Email",
+    "spacelibre 片头播放器": "Pemutar intro spacelibre",
+    "spacelibre 3D 片头播放器": "Pemutar intro 3D spacelibre"
   }
 }

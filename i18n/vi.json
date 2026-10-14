@@ -197,7 +197,13 @@
     "邮件通讯页头": "Đầu trang bản tin email",
     "邻近色": "Màu tương cận",
     "邻近色 / 光谱渐进": "Màu tương cận / Chuyển sắc quang phổ",
-    "错误 / ERROR": "Lỗi / ERROR"
+    "错误 / ERROR": "Lỗi / ERROR",
+    "轨道诞生，30 秒品牌片头。": "Sự ra đời của quỹ đạo. Đoạn mở đầu thương hiệu dài 30 giây.",
+    "从一颗完整星球，到卫星轨道与探索航迹，最后收束为 spacelibre 标志。MP4 采用电光轨道固定配色；矢量预览随全站配色变化。": "Một hành tinh hoàn chỉnh tạo thành quỹ đạo vệ tinh, mở ra các đường bay khám phá rồi hợp lại thành biểu trưng spacelibre. MP4 dùng bảng màu Quỹ đạo điện cố định; bản xem trước véc-tơ theo bảng màu của trang.",
+    "打开片头播放器 ↗": "Mở trình phát đoạn mở đầu ↗",
+    "片头": "Mở đầu",
+    "轨道诞生，30 秒 3D 片头。": "Sự ra đời của quỹ đạo. Đoạn mở đầu 3D dài 30 giây.",
+    "抵近星球圆环，掠过轨道边缘，穿行探索航迹，最终回到完整 spacelibre 标志。3D 预览与视频导出跟随当前配色。": "Tiến gần vòng hành tinh, lướt sát rìa quỹ đạo, đi qua các đường bay khám phá và trở lại biểu trưng spacelibre hoàn chỉnh. Bản xem trước 3D và video xuất theo bảng màu hiện tại."
   },
   "attr": {
     "24 像素标志": "Logo 24 pixel",
@@ -324,6 +330,8 @@
     "轨道线条": "Đường quỹ đạo",
     "辅色关系": "Quan hệ màu phụ",
     "邮件签名": "Chữ ký email",
-    "邮件通讯页头": "Đầu trang bản tin email"
+    "邮件通讯页头": "Đầu trang bản tin email",
+    "spacelibre 片头播放器": "Trình phát đoạn mở đầu spacelibre",
+    "spacelibre 3D 片头播放器": "Trình phát đoạn mở đầu 3D spacelibre"
   }
 }

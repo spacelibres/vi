@@ -197,7 +197,13 @@
     "邮件通讯页头": "Bülten Başlığı",
     "邻近色": "Komşu Renk",
     "邻近色 / 光谱渐进": "Komşu Renk / Spektral Geçiş",
-    "错误 / ERROR": "Hata / ERROR"
+    "错误 / ERROR": "Hata / ERROR",
+    "轨道诞生，30 秒品牌片头。": "Yörüngenin Doğuşu. 30 saniyelik marka açılışı.",
+    "从一颗完整星球，到卫星轨道与探索航迹，最后收束为 spacelibre 标志。MP4 采用电光轨道固定配色；矢量预览随全站配色变化。": "Tam bir gezegen uydu yörüngesini oluşturur, keşif yollarına açılır ve spacelibre logosuna dönüşür. MP4 sabit Elektrik Yörüngesi paletini kullanır; vektör önizleme sitenin paletini izler.",
+    "打开片头播放器 ↗": "Açılış oynatıcısını aç ↗",
+    "片头": "Açılış",
+    "轨道诞生，30 秒 3D 片头。": "Yörüngenin Doğuşu. 30 saniyelik 3D açılış.",
+    "抵近星球圆环，掠过轨道边缘，穿行探索航迹，最终回到完整 spacelibre 标志。3D 预览与视频导出跟随当前配色。": "Gezegen halkasına yaklaşın, yörünge kenarından geçin, keşif yollarında ilerleyin ve tam spacelibre logosuna dönün. 3D önizleme ve video dışa aktarma mevcut paleti izler."
   },
   "attr": {
     "24 像素标志": "24 px Logo",
@@ -324,6 +330,8 @@
     "轨道线条": "Yörünge Çizgileri",
     "辅色关系": "Renk Uyumu",
     "邮件签名": "E-posta İmzası",
-    "邮件通讯页头": "Bülten Başlığı"
+    "邮件通讯页头": "Bülten Başlığı",
+    "spacelibre 片头播放器": "spacelibre açılış oynatıcısı",
+    "spacelibre 3D 片头播放器": "spacelibre 3D açılış oynatıcısı"
   }
 }

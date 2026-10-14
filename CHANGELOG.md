@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.22 - 2026-10-14
+
+- Add Orbit Birth 3D: a Three.js/WebGL 30-second 1080p brand intro with planet-surface closeups, orbital flybys, trajectory traversal and an intact final SVG identity.
+- Ship sound and silent H.264 MP4 masters captured from the real 3D scene, plus an offline-ready pinned Three.js runtime and editable source package.
+- Fully translate the intro section and all player, camera-stage and export strings into all 22 supported locales, including RTL layouts; synchronize iframe language and palette with the manual.
+- Provide replay, timeline scrubbing, color/white-monochrome modes and browser video recording using the selected palette.
+- Verify complete decoding of both 900-frame MP4s, actual AAC sound levels, official final logo paths, 3D camera poses and locale coverage. Translation has not undergone native-speaker proofreading.
+
 ## 1.5.21 - 2026-10-14
 
 - Fix the server cache rules so the HTML and `sw.js` are revalidated (`no-cache`) instead of being cached for a week. The two cache policies now use mutually exclusive matchers instead of relying on Caddy's header override order, which had let the long-cache rule win on every path.

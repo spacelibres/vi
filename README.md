@@ -44,3 +44,7 @@ python -m http.server 8765
 NASA 影像仅作为辅助背景，原始发布链接和完整署名见 [影像来源](05-imagery/sources.json)。SVG 标志和图形保持矢量，不以照片替代。
 
 站点标题、canonical 和 manifest 按 vi.spacelibre.cn 准备。提交 GitHub 不等于已配置 DNS、HTTPS 或部署该域名；发布时将此目录作为静态站点根目录。RGB 印刷应按实际输出配置转换并打样。
+
+## 品牌片头 / Orbit Birth 3D
+
+[30 秒 3D 片头播放器](08-motion/index.html)使用离线 Three.js/WebGL，提供抵近星球圆环、掠过轨道边缘、穿行航迹与拉远收束的镜头。完整品牌字标使用确认过的 SVG 轮廓。播放器支持全部 22 种语言，跟随网站语言与配色，并可录制当前配色的 30 秒视频。另附已渲染的 1080p 配乐与无声 MP4。[源码与制作说明](08-motion/README.md)解释了 3D 叙事、源文件与导出方式。

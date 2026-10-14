@@ -197,7 +197,13 @@
     "邮件通讯页头": "Newsletter Header",
     "邻近色": "Analogous",
     "邻近色 / 光谱渐进": "Analogous / Spectral Progression",
-    "错误 / ERROR": "Error / ERROR"
+    "错误 / ERROR": "Error / ERROR",
+    "轨道诞生，30 秒品牌片头。": "Orbit Birth. A 30-second brand intro.",
+    "从一颗完整星球，到卫星轨道与探索航迹，最后收束为 spacelibre 标志。MP4 采用电光轨道固定配色；矢量预览随全站配色变化。": "A complete planet forms its satellite orbit, opens into exploration trajectories and resolves into the spacelibre mark. MP4 uses the fixed Electric Orbit palette; vector preview follows the site palette.",
+    "打开片头播放器 ↗": "Open the intro player ↗",
+    "片头": "Intro",
+    "轨道诞生，30 秒 3D 片头。": "Orbit Birth. A 30-second 3D intro.",
+    "抵近星球圆环，掠过轨道边缘，穿行探索航迹，最终回到完整 spacelibre 标志。3D 预览与视频导出跟随当前配色。": "Approach the planet’s ring, skim the orbital edge, travel through exploration trajectories and return to the complete spacelibre mark. The 3D preview and video export follow the current palette."
   },
   "attr": {
     "24 像素标志": "24 px Logo",
@@ -324,6 +330,8 @@
     "轨道线条": "Orbit Lines",
     "辅色关系": "Harmony",
     "邮件签名": "Email Signature",
-    "邮件通讯页头": "Newsletter Header"
+    "邮件通讯页头": "Newsletter Header",
+    "spacelibre 片头播放器": "spacelibre intro player",
+    "spacelibre 3D 片头播放器": "spacelibre 3D intro player"
   }
 }

@@ -197,7 +197,13 @@
     "邮件通讯页头": "Nieuwsbriefkop",
     "邻近色": "Analoog",
     "邻近色 / 光谱渐进": "Analoog / Spectrale progressie",
-    "错误 / ERROR": "Fout / ERROR"
+    "错误 / ERROR": "Fout / ERROR",
+    "轨道诞生，30 秒品牌片头。": "Geboorte van de baan. Een merkintro van 30 seconden.",
+    "从一颗完整星球，到卫星轨道与探索航迹，最后收束为 spacelibre 标志。MP4 采用电光轨道固定配色；矢量预览随全站配色变化。": "Een volledige planeet vormt zijn satellietbaan, ontvouwt zich tot verkenningstrajecten en verandert in het spacelibre-logo. MP4 gebruikt het vaste Elektrische baan-palet; het vectorvoorbeeld volgt het sitepalet.",
+    "打开片头播放器 ↗": "Introspeler openen ↗",
+    "片头": "Intro",
+    "轨道诞生，30 秒 3D 片头。": "Geboorte van de baan. Een 3D-intro van 30 seconden.",
+    "抵近星球圆环，掠过轨道边缘，穿行探索航迹，最终回到完整 spacelibre 标志。3D 预览与视频导出跟随当前配色。": "Nader de planeetring, scheer langs de rand van de baan, reis door de verkenningstrajecten en keer terug naar het volledige spacelibre-logo. Het 3D-voorbeeld en de video-export volgen het huidige palet."
   },
   "attr": {
     "24 像素标志": "24 px-logo",
@@ -324,6 +330,8 @@
     "轨道线条": "Orbitlijnen",
     "辅色关系": "Kleurharmonie",
     "邮件签名": "E-mailhandtekening",
-    "邮件通讯页头": "Nieuwsbriefkop"
+    "邮件通讯页头": "Nieuwsbriefkop",
+    "spacelibre 片头播放器": "spacelibre introspeler",
+    "spacelibre 3D 片头播放器": "spacelibre 3D-introspeler"
   }
 }

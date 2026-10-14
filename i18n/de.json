@@ -197,7 +197,13 @@
     "邮件通讯页头": "Newsletter-Kopf",
     "邻近色": "Analog",
     "邻近色 / 光谱渐进": "Analog / Spektrale Progression",
-    "错误 / ERROR": "Fehler / ERROR"
+    "错误 / ERROR": "Fehler / ERROR",
+    "轨道诞生，30 秒品牌片头。": "Geburt der Umlaufbahn. Ein 30-sekündiges Markenintro.",
+    "从一颗完整星球，到卫星轨道与探索航迹，最后收束为 spacelibre 标志。MP4 采用电光轨道固定配色；矢量预览随全站配色变化。": "Ein vollständiger Planet bildet seine Satellitenumlaufbahn, öffnet sich zu Erkundungsbahnen und geht in das spacelibre-Logo über. MP4 verwendet die feste Palette Elektrische Umlaufbahn; die Vektorvorschau folgt der Website-Palette.",
+    "打开片头播放器 ↗": "Introplayer öffnen ↗",
+    "片头": "Intro",
+    "轨道诞生，30 秒 3D 片头。": "Geburt der Umlaufbahn. Ein 30-sekündiges 3D-Intro.",
+    "抵近星球圆环，掠过轨道边缘，穿行探索航迹，最终回到完整 spacelibre 标志。3D 预览与视频导出跟随当前配色。": "Nähern Sie sich dem Planetenring, streifen Sie den Rand der Umlaufbahn, durchqueren Sie die Erkundungsbahnen und kehren Sie zum vollständigen spacelibre-Logo zurück. 3D-Vorschau und Videoexport folgen der aktuellen Palette."
   },
   "attr": {
     "24 像素标志": "24-px-Logo",
@@ -324,6 +330,8 @@
     "轨道线条": "Orbitlinien",
     "辅色关系": "Farbharmonie",
     "邮件签名": "E-Mail-Signatur",
-    "邮件通讯页头": "Newsletter-Kopf"
+    "邮件通讯页头": "Newsletter-Kopf",
+    "spacelibre 片头播放器": "spacelibre Introplayer",
+    "spacelibre 3D 片头播放器": "spacelibre 3D-Introplayer"
   }
 }
