@@ -28,6 +28,13 @@ SKIP_CLONE="${SKIP_CLONE:-0}"      # 1=不克隆/拉取，直接使用已有 APP
 FORCE="${FORCE:-0}"                # 1=允许清理非本脚本创建的非空 APP_DIR
 ACME_EMAIL="${ACME_EMAIL:-}"       # 可选：Let's Encrypt 通知邮箱
 
+# —— GitHub Webhook 自动部署（可选）——
+WEBHOOK_ENABLE="${WEBHOOK_ENABLE:-0}"        # 1=安装 webhook 接收器并自动部署
+WEBHOOK_PATH="${WEBHOOK_PATH:-/hooks/deploy}"  # 对外路径（经 Caddy 反代）
+WEBHOOK_HOST="${WEBHOOK_HOST:-127.0.0.1}"      # 接收器监听地址（仅回环）
+WEBHOOK_PORT="${WEBHOOK_PORT:-9100}"          # 接收器监听端口
+WEBHOOK_SECRET="${WEBHOOK_SECRET:-}"          # 留空则自动生成
+
 BEGIN_MARK="# >>> spacelibre-vi managed block (do not edit) >>>"
 END_MARK="# <<< spacelibre-vi managed block <<<"
 
@@ -208,6 +215,15 @@ write_caddy_config() {
     printf '%s {\n' "$DOMAIN"
     printf '\troot * %s\n' "$APP_DIR"
     printf '\tencode zstd gzip\n'
+    printf '\n'
+    if [ "$WEBHOOK_ENABLE" = "1" ]; then
+      printf '\t# GitHub Webhook → 本地接收器（仅回环）\n'
+      printf '\t@viwebhook path %s\n' "$WEBHOOK_PATH"
+      printf '\thandle @viwebhook {\n'
+      printf '\t\treverse_proxy %s:%s\n' "$WEBHOOK_HOST" "$WEBHOOK_PORT"
+      printf '\t}\n'
+      printf '\n'
+    fi
     printf '\tfile_server {\n'
     printf '\t\thide .git\n'
     printf '\t}\n'
@@ -288,12 +304,113 @@ preflight_dns() {
 }
 
 # ---------------------------------------------------------------------------
+# 6. GitHub Webhook 接收器（可选，自动发现新版本并同步）
+# ---------------------------------------------------------------------------
+install_webhook() {
+  [ "$WEBHOOK_ENABLE" = "1" ] || { log "未启用 webhook（设置 WEBHOOK_ENABLE=1 可启用自动部署）"; return 0; }
+
+  local src="$APP_DIR/deploy/vi-webhook.py"
+  [ -f "$src" ] || die "找不到 $src，无法安装 webhook 接收器（请确认仓库已更新到含 deploy/ 的版本）。"
+
+  # 密钥：留空则随机生成
+  if [ -z "$WEBHOOK_SECRET" ]; then
+    if command -v openssl >/dev/null 2>&1; then
+      WEBHOOK_SECRET="$(openssl rand -hex 32)"
+    else
+      WEBHOOK_SECRET="$(head -c 32 /dev/urandom | od -An -tx1 | tr -d ' \n')"
+    fi
+  fi
+
+  install -d -m 0755 /usr/local/bin /usr/local/sbin
+  install -m 0755 "$src" /usr/local/bin/vi-webhook.py
+
+  # 稳定版部署脚本（供 webhook 调用）；仅在语法校验通过时替换，避免坏提交锁死自动部署
+  if [ -f "$APP_DIR/deploy/deploy.sh" ] && bash -n "$APP_DIR/deploy/deploy.sh" 2>/dev/null; then
+    install -m 0755 "$APP_DIR/deploy/deploy.sh" /usr/local/sbin/vi-deploy.sh
+  else
+    warn "仓库中的 deploy.sh 语法校验未通过，保留现有 /usr/local/sbin/vi-deploy.sh"
+  fi
+
+  # 部署配置（供稳定版脚本以无参数方式运行）
+  cat > /etc/default/vi-deploy <<EOF
+DOMAIN=$DOMAIN
+REPO_URL=$REPO_URL
+REPO_BRANCH=$REPO_BRANCH
+APP_DIR=$APP_DIR
+CADDYFILE=$CADDYFILE
+BUILD_ZIP=$BUILD_ZIP
+SETUP_FIREWALL=$SETUP_FIREWALL
+WEBHOOK_ENABLE=1
+WEBHOOK_PATH=$WEBHOOK_PATH
+WEBHOOK_HOST=$WEBHOOK_HOST
+WEBHOOK_PORT=$WEBHOOK_PORT
+EOF
+  chmod 0644 /etc/default/vi-deploy
+
+  # 接收器配置（含密钥，仅 root 可读）
+  cat > /etc/vi-webhook.env <<EOF
+VI_WEBHOOK_SECRET=$WEBHOOK_SECRET
+VI_WEBHOOK_HOST=$WEBHOOK_HOST
+VI_WEBHOOK_PORT=$WEBHOOK_PORT
+VI_BRANCH=$REPO_BRANCH
+VI_DEPLOY_TAGS=1
+VI_DEPLOY_CMD=/usr/local/sbin/vi-deploy.sh
+EOF
+  chmod 0600 /etc/vi-webhook.env
+
+  # systemd 单元（KillMode=process：重启服务不会中断正在进行的部署子进程）
+  cat > /etc/systemd/system/vi-webhook.service <<'EOF'
+[Unit]
+Description=spacelibre-vi GitHub webhook receiver
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/vi-deploy
+EnvironmentFile=/etc/vi-webhook.env
+ExecStart=/usr/bin/env python3 /usr/local/bin/vi-webhook.py
+Restart=on-failure
+RestartSec=3
+KillMode=process
+User=root
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+  systemctl daemon-reload
+  systemctl enable vi-webhook >/dev/null 2>&1 || true
+  systemctl restart vi-webhook
+
+  sleep 1
+  if systemctl is-active vi-webhook >/dev/null 2>&1; then
+    ok "webhook 接收器运行中（$WEBHOOK_HOST:$WEBHOOK_PORT）"
+  else
+    warn "webhook 服务未运行，请检查：systemctl status vi-webhook"
+  fi
+
+  ok "GitHub Webhook 地址：https://$DOMAIN$WEBHOOK_PATH"
+  printf '   事件：push / release    Content-Type: application/json\n'
+  printf '   Secret：%s\n' "$WEBHOOK_SECRET"
+  printf '   （本脚本可用 GH_TOKEN 自动创建该 webhook，见 deploy/README.md）\n'
+}
+
+# ---------------------------------------------------------------------------
 # main
 # ---------------------------------------------------------------------------
 main() {
   log "spacelibre-vi 部署开始"
   log "域名=$DOMAIN  仓库=$REPO_URL  分支=$REPO_BRANCH  目录=$APP_DIR"
   require_root
+
+  # 串行化：避免与 webhook 触发的部署并发执行
+  if command -v flock >/dev/null 2>&1; then
+    [ -d /var/lock ] || mkdir -p /var/lock
+    exec 9>/var/lock/vi-deploy.lock
+    flock -n 9 || die "已有部署正在进行（/var/lock/vi-deploy.lock），请稍后重试。"
+  fi
+
   ensure_deps
   ensure_caddy
   deploy_files
@@ -301,6 +418,7 @@ main() {
   set_perms
   write_caddy_config
   reload_caddy
+  install_webhook
   open_firewall
   preflight_dns
 

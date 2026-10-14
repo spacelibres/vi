@@ -17,6 +17,12 @@ vi.spacelibre.cn {
 	# 压缩（Caddy 仅在客户端支持时启用）
 	encode zstd gzip
 
+	# GitHub Webhook → 本地接收器（仅回环；删除以下 4 行即可关闭自动部署）
+	@viwebhook path /hooks/deploy
+	handle @viwebhook {
+		reverse_proxy 127.0.0.1:9100
+	}
+
 	# 静态文件服务；隐藏 .git，避免泄露仓库历史
 	file_server {
 		hide .git

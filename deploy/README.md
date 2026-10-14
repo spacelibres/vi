@@ -23,6 +23,10 @@ flowchart LR
     C -->|vi.spacelibre.cn| F[file_server<br/>/srv/spacelibre-vi]
     C -->|tile1.spacexway.com| P[reverse_proxy<br/>localhost:3000]
     F --> S[静态站点文件]
+    G[GitHub push/release] -->|HTTPS /hooks/deploy| C
+    C -->|127.0.0.1:9100| W[vi-webhook 接收器]
+    W -->|校验签名后| D[vi-deploy.sh]
+    D --> F
 ```
 
 - Caddy 全局监听 80/443；对每个站名自动申请并续期 Let's Encrypt 证书。
@@ -35,6 +39,7 @@ flowchart LR
 | --- | --- |
 | `deploy.sh` | 服务端安装脚本（在 VPS 上以 root 运行，幂等） |
 | `one-click.sh` | 本地一键包装：SSH 到 VPS 后执行 `deploy.sh` |
+| `vi-webhook.py` | GitHub Webhook 接收器（校验 HMAC 签名后触发部署） |
 | `Caddyfile.vi.spacelibre.cn` | 追加到 Caddyfile 的站点块参考 |
 
 ## 四、使用方式
@@ -77,6 +82,10 @@ ssh root@176.122.165.41 'bash -s' < deploy/deploy.sh
 | `SETUP_FIREWALL` | `1` | 是否尝试放行 80/443 |
 | `ACME_EMAIL` | 空 | 可选，证书通知邮箱 |
 | `FORCE` | `0` | 允许清理已存在的非空 `APP_DIR` |
+| `WEBHOOK_ENABLE` | `0` | 设为 `1` 安装 GitHub Webhook 接收器并开启自动部署 |
+| `WEBHOOK_PATH` | `/hooks/deploy` | 对外 Webhook 路径 |
+| `WEBHOOK_PORT` | `9100` | 接收器监听端口（仅 `127.0.0.1`） |
+| `WEBHOOK_SECRET` | 空 | Webhook 密钥；留空则自动生成 |
 
 ## 五、脚本做了什么（幂等）
 
@@ -98,7 +107,91 @@ ssh root@176.122.165.41 'bash -s' < deploy/deploy.sh
 
 > 首次访问若证书报错，多为 DNS 尚未生效或 80/443 被拦截；修正后 Caddy 会自动重试签发。
 
-## 七、更新与回滚
+## 七、GitHub Webhook 自动部署（可选）
+
+开启后，向 `spacelibres/vi` 推送 `main`（或推送 `v*` 标签、发布 Release）会**自动同步**到 VPS。
+
+```mermaid
+sequenceDiagram
+    participant GH as GitHub
+    participant C as Caddy (443)
+    participant W as vi-webhook
+    participant D as vi-deploy.sh
+    GH->>C: POST /hooks/deploy (HMAC 签名)
+    C->>W: reverse_proxy 127.0.0.1:9100
+    W->>W: 校验 X-Hub-Signature-256
+    W-->>GH: 202 Accepted
+    W->>D: 触发部署（后台、加锁）
+    D->>D: git fetch/reset + 重建 zip + reload caddy
+```
+
+### 启用
+
+在部署时加上 `WEBHOOK_ENABLE=1`（密钥留空自动生成）：
+
+```sh
+WEBHOOK_ENABLE=1 bash deploy/deploy.sh
+```
+
+脚本会安装以下内容：
+
+| 路径 | 说明 |
+| --- | --- |
+| `/usr/local/bin/vi-webhook.py` | 接收器脚本 |
+| `/usr/local/sbin/vi-deploy.sh` | 稳定版部署脚本（供 webhook 调用） |
+| `/etc/default/vi-deploy` | 部署环境变量 |
+| `/etc/vi-webhook.env` | 接收器 env（含密钥，`0600`） |
+| `/etc/systemd/system/vi-webhook.service` | 服务单元（仅监听回环；`KillMode=process`） |
+
+并在 Caddy 站点块中加入 `@viwebhook path /hooks/deploy` → `reverse_proxy 127.0.0.1:9100`。
+
+### 在 GitHub 创建 Webhook
+
+方式一（界面）：仓库 Settings → Webhooks → Add webhook
+
+- Payload URL：`https://vi.spacelibre.cn/hooks/deploy`
+- Content type：`application/json`
+- Secret：部署时打印的 Secret
+- Events：`Just the push event`（如需按发布触发，选 `Let me select individual events` 勾选 `Releases`）
+
+方式二（一键，需写权限的 token）：
+
+```sh
+GH_TOKEN=<token> gh api repos/spacelibres/vi/hooks -X POST \
+  -f name=web -F active=true \
+  -f 'events[]=push' -f 'events[]=release' \
+  -f 'config[url]=https://vi.spacelibre.cn/hooks/deploy' \
+  -f 'config[content_type]=json' \
+  -f 'config[secret]=<SECRET>' \
+  -f 'config[insecure_ssl]=0'
+```
+
+### 触发规则
+
+| 事件 | 条件 | 是否部署 |
+| --- | --- | --- |
+| `push` | `refs/heads/main` | ✅ |
+| `push` | `refs/tags/v*` | ✅ |
+| `release` | `action = published` | ✅ |
+| `ping` | — | 返回 200（仅握手） |
+| 其它 | — | 忽略（200） |
+
+### 安全性与可靠性
+
+- 接收器仅绑定 `127.0.0.1:9100`，只能经 Caddy 访问；所有请求必须携带正确的 `X-Hub-Signature-256`，否则 `401`。
+- 部署在后台线程执行，并用 `flock /var/lock/vi-deploy.lock` 串行化；并发触发会被安全跳过。
+- 服务单元用 `KillMode=process`，重启服务不会中断正在进行的部署。
+- `/usr/local/sbin/vi-deploy.sh` 仅在仓库版本通过 `bash -n` 语法校验后才替换，避免坏提交锁死自动部署。
+
+### 排查
+
+```sh
+systemctl status vi-webhook        # 服务状态
+journalctl -u vi-webhook -f        # 接收器日志（含每次部署输出）
+git -C /srv/spacelibre-vi log --oneline -3   # 当前部署的提交
+```
+
+## 八、更新与回滚
 
 - **更新**：再次运行脚本即可（拉取最新代码并重载 Caddy）。
 - **回滚代码**：`git -C /srv/spacelibre-vi reset --hard <commit>`。
