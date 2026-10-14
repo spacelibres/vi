@@ -72,6 +72,7 @@ If the correct version, the changelog wording, or the scope is ambiguous,
 - `index.html`, `styles.css`, `app.js`, `svg-sources.js` — the static VI site
   (no Node runtime required; Node is only used for verification/build).
 - `01-logos/` … `07-palettes/`, `icons/` (incl. `icons/nebula/`), `05-imagery/` — vector and image assets.
+- `i18n/` + `i18n.js` + `i18n-data.js` — client-side translations with auto-detection (`scripts/extract-i18n.mjs` refreshes the base catalogue, `scripts/build-i18n.mjs` rebuilds the offline bundle).
 - `scripts/` — `set-version.mjs` (version sync), `validate.mjs` (`npm run check`),
   `build_artifacts.py` (`npm run build`).
 - `tests/` — Node test suite (`npm test`).

@@ -8,6 +8,16 @@
 .palette-downloads{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px 24px}.palette-downloads h4{width:100%;font-size:15px;margin:0 0 5px}.palette-downloads a{font:12px Consolas,monospace;color:var(--blue)}
 
 .lab-chip strong{overflow-wrap:anywhere}.space-credit h3{font-size:18px;letter-spacing:0;line-height:1.5}
+/* i18n: language picker, RTL mirroring and CJK/Arabic font stacks */
+.lang-picker{display:flex;align-items:center}
+.lang-picker select{height:32px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card,#fff);color:var(--muted);font-size:12px}
+[dir="rtl"] .logo-card .eyebrow{left:auto;right:28px}
+[dir="rtl"] .card-download{right:auto;left:25px}
+html:lang(ja) body{font-family:Arial,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,"Microsoft YaHei",sans-serif}
+html:lang(ko) body{font-family:Arial,"Malgun Gothic","Apple SD Gothic Neo","Microsoft YaHei",sans-serif}
+html:lang(ar) body{font-family:Arial,"Segoe UI",Tahoma,"Microsoft YaHei",sans-serif}
+html:lang(he) body{font-family:Arial,"Segoe UI",Tahoma,"Microsoft YaHei",sans-serif}
+html:lang(fa) body{font-family:Arial,"Segoe UI",Tahoma,"Microsoft YaHei",sans-serif}
 
 /* VI 1.3: one theme governs the entire page and all vector previews. */
 body{background:radial-gradient(ellipse at 100% 0,rgba(var(--theme-primary-rgb,0,123,255),.10),transparent 700px),var(--cloud)}

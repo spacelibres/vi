@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.12 - 2026-10-14
+
+- Add client-side internationalization: the site auto-detects the visitor's language (`?lang` → saved choice → `navigator.languages`), ships 22 languages (including RTL Arabic, Hebrew and Persian) and offers a language switcher.
+- Bundle the translations into an offline `i18n-data.js`; add `scripts/extract-i18n.mjs`, `scripts/i18n-merge.mjs` and `scripts/build-i18n.mjs`, and route the app's runtime strings through a `t()` helper.
+- Enforce i18n in CI: `validate.mjs` checks that every locale fully covers the base catalogue, preserves placeholders and keeps `i18n-data.js` in sync.
+- Verify: `npm test` and `npm run check` pass at 1.5.12.
+
 ## 1.5.11 - 2026-10-14
 
 - Make the site follow its own manual: snap the layout to the 8px spacing rhythm with `--space-*` tokens, raise h1 into the documented 48–80px display range in Arial Bold, and bring the header/footer wordmarks to the 240px minimum with an icon swap on small screens.

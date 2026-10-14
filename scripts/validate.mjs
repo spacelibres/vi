@@ -1,4 +1,5 @@
 import fs from 'node:fs';import path from 'node:path';import {execFileSync} from 'node:child_process';import {DOMParser} from 'linkedom';
+import {build as buildI18n, locales as i18nLocales} from './i18n-merge.mjs';
 
 // --- version + UI labels ---
 const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
@@ -57,4 +58,22 @@ scoped=scoped.replace(/(?:rgba?|color-mix)\([^()]*(?:\([^()]*\)[^()]*)*\)/g,m=>m
 const literals=[...scoped.matchAll(/#[0-9a-fA-F]{3,8}\b|rgba?\([^)]*\)/g)].map(m=>m[0]);
 if(literals.length)throw Error('Ad-hoc color literals (use tokens): '+literals.join(', '));
 
-console.log('Validated version '+pkg.version+', '+svgs.length+' vector assets, references, VI consistency and secret exclusion.');
+// --- i18n: every locale fully covers the base catalogue, and the bundle stays in sync ---
+const baseCatalogue=JSON.parse(fs.readFileSync('i18n/zh-CN.json','utf8'));
+const locales=i18nLocales();
+if(!locales.length)throw Error('No i18n locales found under i18n/');
+for(const locale of locales){
+ const d=JSON.parse(fs.readFileSync('i18n/'+locale+'.json','utf8'));
+ for(const kind of ['text','attr']){
+  const base=baseCatalogue[kind],obj=d[kind]||{};
+  const missing=Object.keys(base).filter(k=>!(k in obj));
+  const extra=Object.keys(obj).filter(k=>!(k in base));
+  if(missing.length||extra.length)throw Error('i18n '+locale+' '+kind+' key mismatch (missing '+missing.length+', extra '+extra.length+')');
+  const ph=s=>(String(s).match(/\{\w+\}/g)||[]).slice().sort().join(',');
+  for(const k of Object.keys(base))if(ph(base[k])!==ph(obj[k]))throw Error('i18n '+locale+' '+kind+' placeholder mismatch: '+k);
+ }
+}
+if(!html.includes('i18n.js'))throw Error('index.html must load the i18n runtime');
+if(fs.readFileSync('i18n-data.js','utf8')!==buildI18n())throw Error('i18n-data.js is out of date; run node scripts/build-i18n.mjs');
+
+console.log('Validated version '+pkg.version+', '+svgs.length+' vector assets, '+locales.length+' locales, references, VI consistency and secret exclusion.');
