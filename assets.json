@@ -94,5 +94,149 @@
     "name": "网站导航",
     "size": "1440 × 160",
     "category": "digital"
+  },
+  {
+    "file": "04-applications/website-hero-1440x900.svg",
+    "name": "网站首页 Hero",
+    "size": "1440 × 900",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/developer-dashboard-1440x1000.svg",
+    "name": "开发者仪表盘",
+    "size": "1440 × 1000",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/login-screen-1200x900.svg",
+    "name": "登录界面",
+    "size": "1200 × 900",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/mobile-welcome-1080x1920.svg",
+    "name": "移动端欢迎页",
+    "size": "1080 × 1920",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/mobile-settings-1080x1920.svg",
+    "name": "移动端设置页",
+    "size": "1080 × 1920",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/error-page-1440x900.svg",
+    "name": "404 错误页",
+    "size": "1440 × 900",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/repository-cover-1280x640.svg",
+    "name": "GitHub 仓库封面",
+    "size": "1280 × 640",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/release-announcement-1080x1080.svg",
+    "name": "版本发布公告",
+    "size": "1080 × 1080",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/documentation-cover-1600x900.svg",
+    "name": "开发文档封面",
+    "size": "1600 × 900",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/architecture-canvas-1600x1000.svg",
+    "name": "架构图画布",
+    "size": "1600 × 1000",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/certificate-A4.svg",
+    "name": "A4 证书",
+    "size": "210mm × 297mm",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/envelope-DL.svg",
+    "name": "DL 信封",
+    "size": "220mm × 110mm",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/identity-badge-600x900.svg",
+    "name": "工作证",
+    "size": "600 × 900",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/sticker-sheet-1200x1200.svg",
+    "name": "贴纸组合",
+    "size": "1200 × 1200",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/packaging-sleeve-1600x800.svg",
+    "name": "包装封套",
+    "size": "1600 × 800",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/tote-print-1200x1400.svg",
+    "name": "帆布袋印刷图案",
+    "size": "1200 × 1400",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/shirt-print-1200x1400.svg",
+    "name": "T 恤印刷图案",
+    "size": "1200 × 1400",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/lanyard-1600x360.svg",
+    "name": "挂绳图案",
+    "size": "1600 × 360",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/exhibition-backdrop-2400x1200.svg",
+    "name": "展会背景板",
+    "size": "2400 × 1200",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/wayfinding-1600x700.svg",
+    "name": "导视标牌",
+    "size": "1600 × 700",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/event-ticket-1600x700.svg",
+    "name": "活动入场券",
+    "size": "1600 × 700",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/video-lower-third-1920x300.svg",
+    "name": "视频字幕条",
+    "size": "1920 × 300",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/video-endcard-1920x1080.svg",
+    "name": "视频结束卡",
+    "size": "1920 × 1080",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/newsletter-header-1200x500.svg",
+    "name": "邮件通讯页头",
+    "size": "1200 × 500",
+    "category": "digital"
   }
 ]

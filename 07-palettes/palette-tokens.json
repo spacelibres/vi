@@ -16,7 +16,9 @@
       "warning": "#845A0B",
       "danger": "#C01C34",
       "primaryOnLight": "#006CE0",
-      "primaryOnDark": "#007BFF"
+      "primaryOnDark": "#007BFF",
+      "planetOnLight": "#E00400",
+      "planetOnDark": "#FF3733"
     },
     "file": "07-palettes/01-electric-orbit.svg"
   },
@@ -37,7 +39,9 @@
       "warning": "#7B610A",
       "danger": "#C01C2E",
       "primaryOnLight": "#0B816A",
-      "primaryOnDark": "#12D6B0"
+      "primaryOnDark": "#12D6B0",
+      "planetOnLight": "#BA13E2",
+      "planetOnDark": "#CE43EF"
     },
     "file": "07-palettes/02-aurora-jump.svg"
   },
@@ -58,7 +62,9 @@
       "warning": "#7B5C0A",
       "danger": "#BC1D1B",
       "primaryOnLight": "#8D36FF",
-      "primaryOnDark": "#A15AFF"
+      "primaryOnDark": "#A15AFF",
+      "planetOnLight": "#C200BF",
+      "planetOnDark": "#FF33FC"
     },
     "file": "07-palettes/03-nebula-spectrum.svg"
   },
@@ -79,7 +85,9 @@
       "warning": "#7F5C0A",
       "danger": "#BC251B",
       "primaryOnLight": "#D13000",
-      "primaryOnDark": "#FF6A3D"
+      "primaryOnDark": "#FF6A3D",
+      "planetOnLight": "#00805D",
+      "planetOnDark": "#33FFC8"
     },
     "file": "07-palettes/04-solar-storm.svg"
   },
@@ -100,7 +108,9 @@
       "warning": "#7F5D0A",
       "danger": "#C51C1E",
       "primaryOnLight": "#0E7D72",
-      "primaryOnDark": "#15BDAD"
+      "primaryOnDark": "#15BDAD",
+      "planetOnLight": "#D41788",
+      "planetOnDark": "#EB47A9"
     },
     "file": "07-palettes/05-deep-space-oasis.svg"
   },
@@ -121,7 +131,9 @@
       "warning": "#895B0B",
       "danger": "#C51C1C",
       "primaryOnLight": "#67790D",
-      "primaryOnDark": "#CBEA35"
+      "primaryOnDark": "#CBEA35",
+      "planetOnLight": "#0F7D94",
+      "planetOnDark": "#46CFEC"
     },
     "file": "07-palettes/06-acid-future.svg"
   }

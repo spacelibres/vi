@@ -1,0 +1,1 @@
+const fs=require('fs');const {generatePalette}=require('../tests/runtime.cjs');const data=JSON.parse(fs.readFileSync('07-palettes/palette-tokens.json','utf8'));for(const a of data)a.colors=generatePalette(a.colors.primary,a.mode);fs.writeFileSync('07-palettes/palette-tokens.json',JSON.stringify(data,null,2)+'\n');console.log('Synchronized 16-role preset tokens');
