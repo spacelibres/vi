@@ -34,6 +34,11 @@ vi.spacelibre.cn {
 		X-Content-Type-Options "nosniff"
 		Referrer-Policy "strict-origin-when-cross-origin"
 	}
+
+	# 缓存：静态资源交给浏览器缓存；HTML 与 Service Worker 必须回源校验。
+	header Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
+	@revalidate path / /index.html /sw.js
+	header @revalidate Cache-Control "no-cache"
 }
 
 # Caddy 默认自动：

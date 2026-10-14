@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.20 - 2026-10-14
+
+- Add a service worker (`sw.js`): it keeps the whole site in a cache and serves repeat visits from that cache instead of re-requesting files, revalidating in the background so new releases still arrive, with an offline fallback to the cached shell.
+- Cache entries are keyed by path and the cache name carries the release version, so a new release installs a new worker, repopulates the cache and drops the previous one.
+- Add HTTP cache headers on the server (Caddy): a long cache for static assets and `no-cache` for the HTML and the service worker so updates are always picked up.
+- Verify: `npm ci`, `npm test` and `npm run check` pass at 1.5.20.
+
 ## 1.5.19 - 2026-10-14
 
 - Replace the three platform `<select>` controls (language, appearance, full-site palette) with self-drawn dropdowns, so the closed control and the option list render the same on every phone instead of drifting with the OS widget. The native `<select>` stays in the DOM as the hidden data source, keeping all existing behaviour and the accessible labels intact.

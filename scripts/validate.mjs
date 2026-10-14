@@ -7,6 +7,7 @@ if(fs.readFileSync('VERSION','utf8').trim()!==pkg.version)throw Error('Version m
 const html=fs.readFileSync('index.html','utf8');
 if(!html.includes('VI '+pkg.version))throw Error('UI version mismatch');
 execFileSync(process.execPath,['--check','app.js']);
+if(fs.existsSync('sw.js'))execFileSync(process.execPath,['--check','sw.js']);
 
 // --- vector assets ---
 function files(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>['.git','node_modules','artifacts'].includes(e.name)?[]:e.isDirectory()?files(path.join(dir,e.name)):[path.join(dir,e.name)]);}
