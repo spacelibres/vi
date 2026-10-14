@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.16 - 2026-10-14
+
+- Fix the mobile 全站配色 bar: the label keeps to one line and the two selects now share a single fluid row that follows the window width, instead of being pinned to a hard-coded 150–160px and squeezing the text into multiple lines.
+- Make the bar wrap (`flex-wrap`) with a non-shrinking label and full-width, evenly split select row on phones.
+- Verify: `npm ci`, `npm test` and `npm run check` pass at 1.5.16.
+
 ## 1.5.15 - 2026-10-14
 
 - Collapse the header section list (编排 / 规范 / 色彩 / 延展 / 影像 / 应用 / 下载) into a toggle menu on phones, so the navigation no longer wraps onto several rows.
