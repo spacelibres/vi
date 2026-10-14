@@ -322,6 +322,11 @@ install_webhook() {
   fi
 
   install -d -m 0755 /usr/local/bin /usr/local/sbin
+
+  # 记录旧接收器校验和，用于判断是否需要重启服务
+  local old_sha new_sha
+  old_sha="$(sha256sum /usr/local/bin/vi-webhook.py 2>/dev/null | awk '{print $1}' || true)"
+  new_sha="$(sha256sum "$src" | awk '{print $1}')"
   install -m 0755 "$src" /usr/local/bin/vi-webhook.py
 
   # 稳定版部署脚本（供 webhook 调用）；仅在语法校验通过时替换，避免坏提交锁死自动部署
@@ -381,7 +386,12 @@ EOF
 
   systemctl daemon-reload
   systemctl enable vi-webhook >/dev/null 2>&1 || true
-  systemctl restart vi-webhook
+  # 仅在接收器脚本变化或服务未运行时重启，避免打断正在进行的部署
+  if [ "$new_sha" != "$old_sha" ] || ! systemctl is-active --quiet vi-webhook; then
+    systemctl restart vi-webhook
+  else
+    ok "接收器未变化，保持现有服务"
+  fi
 
   sleep 1
   if systemctl is-active vi-webhook >/dev/null 2>&1; then
