@@ -1,0 +1,37 @@
+# ---------------------------------------------------------------------------
+# 参考：为 vi.spacelibre.cn 追加到现有 /etc/caddy/Caddyfile 的站点块
+#
+# deploy.sh 会自动写入并托管这段配置（以 managed 标记包裹），此文件仅供人工参考，
+# 不要手动与脚本写入的块重复添加。
+#
+# 它不会影响已有的站点块，例如：
+#   tile1.spacexway.com {
+#       reverse_proxy localhost:3000
+#   }
+# ---------------------------------------------------------------------------
+
+vi.spacelibre.cn {
+	# 纯静态站点，直接由 Caddy 从磁盘提供，无需额外后端端口
+	root * /srv/spacelibre-vi
+
+	# 压缩（Caddy 仅在客户端支持时启用）
+	encode zstd gzip
+
+	# 静态文件服务；隐藏 .git，避免泄露仓库历史
+	file_server {
+		hide .git
+	}
+
+	# 基础安全响应头（HTTPS 由 Caddy 自动签发证书）
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+}
+
+# Caddy 默认自动：
+#   1) 监听 80 并 301 跳转到 443
+#   2) 通过 ACME 为 vi.spacelibre.cn 申请/续期 Let's Encrypt 证书
+#   3) 在 443 上提供 HTTP/1.1、HTTP/2、HTTP/3
+# 因此“映射到 443 访问”无需手写端口，也不需要单独的本地服务。
