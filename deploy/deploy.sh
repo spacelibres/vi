@@ -312,7 +312,10 @@ install_webhook() {
   local src="$APP_DIR/deploy/vi-webhook.py"
   [ -f "$src" ] || die "找不到 $src，无法安装 webhook 接收器（请确认仓库已更新到含 deploy/ 的版本）。"
 
-  # 密钥：留空则随机生成
+  # 密钥：优先沿用已有的，其次生成新的（避免每次自动部署都更换密钥导致 GitHub 校验失败）
+  if [ -z "$WEBHOOK_SECRET" ] && [ -r /etc/vi-webhook.env ]; then
+    WEBHOOK_SECRET="$(sed -n 's/^VI_WEBHOOK_SECRET=//p' /etc/vi-webhook.env | head -n1)"
+  fi
   if [ -z "$WEBHOOK_SECRET" ]; then
     if command -v openssl >/dev/null 2>&1; then
       WEBHOOK_SECRET="$(openssl rand -hex 32)"

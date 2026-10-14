@@ -182,6 +182,7 @@ GH_TOKEN=<token> gh api repos/spacelibres/vi/hooks -X POST \
 - 部署在后台线程执行，并用 `flock /var/lock/vi-deploy.lock` 串行化；并发触发会被安全跳过。
 - 服务单元用 `KillMode=process`，重启服务不会中断正在进行的部署。
 - `/usr/local/sbin/vi-deploy.sh` 仅在仓库版本通过 `bash -n` 语法校验后才替换，避免坏提交锁死自动部署。
+- Webhook 密钥保存在 `/etc/vi-webhook.env`（`0600`）；重复运行或自动部署会**沿用**已有密钥（仅首次生成），不会打断 GitHub 校验。查看：`grep VI_WEBHOOK_SECRET /etc/vi-webhook.env`。
 
 ### 排查
 
