@@ -25,3 +25,20 @@ body{background:radial-gradient(ellipse at 100% 0,rgba(var(--theme-primary-rgb,0
 @media(max-width:720px){.global-themebar{top:0;padding:16px 24px}.themebar-note{display:none}.global-themebar select{min-width:150px;max-width:160px;font-size:12px}.global-themebar>div{gap:8px}html{scroll-padding-top:78px}}
 .smart-summary{font-size:14px;line-height:1.6;padding:16px 16px;border-radius:12px;background:var(--cloud);color:var(--navy);margin-bottom:24px}.semantic-preview{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}.semantic-preview>span{font-size:12px;padding:7px 8px;border-radius:6px}.state-success{color:var(--theme-success);background:color-mix(in srgb,var(--theme-success) 9%,var(--card))}.state-warning{color:var(--theme-warning);background:color-mix(in srgb,var(--theme-warning) 9%,var(--card))}.state-danger{color:var(--theme-danger);background:color-mix(in srgb,var(--theme-danger) 9%,var(--card))}.color-lab{scroll-margin-top:155px}
 @media(max-width:720px){.color-lab{scroll-margin-top:85px}.smart-summary{font-size:12px}}
+
+/* VI 1.5.15: on phones the long section list collapses into a toggle menu instead of wrapping. */
+.topbar-actions{display:flex;align-items:center;gap:16px}
+.nav-toggle{display:none}
+.nav-toggle-bar{display:block;height:2px;border-radius:2px;background:var(--navy)}
+@media(max-width:720px){
+ .topbar{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:16px}
+ .brand{order:1}
+ .topbar-actions{order:2;margin-inline-start:auto}
+ .nav-toggle{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:48px;height:48px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card,#fff)}
+ .topbar.nav-open .nav-toggle{background:var(--blue);border-color:var(--blue)}
+ .topbar.nav-open .nav-toggle-bar{background:var(--theme-on-primary,#fff)}
+ nav{order:3;flex-basis:100%;display:none;flex-direction:column;gap:0;font-size:16px;margin-top:8px;background:var(--card,#fff);border:1px solid var(--line);border-radius:16px;padding:8px 16px}
+ .topbar.nav-open nav{display:flex}
+ nav a{padding:16px 0;border-bottom:1px solid var(--line)}
+ nav a:last-child{border-bottom:0}
+}

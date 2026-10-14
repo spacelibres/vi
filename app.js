@@ -57,6 +57,10 @@ if(window.ResizeObserver&&topbarEl){new ResizeObserver(syncChromeHeight).observe
 window.addEventListener("resize",syncChromeHeight);
 window.addEventListener("load",syncChromeHeight);
 
+// Mobile navigation: the long section list collapses into a toggle menu.
+const navToggle=document.querySelector('.nav-toggle');
+if(navToggle){const setNav=open=>{document.querySelector('.topbar').classList.toggle('nav-open',open);navToggle.setAttribute('aria-expanded',String(open));};navToggle.addEventListener('click',()=>setNav(!document.querySelector('.topbar').classList.contains('nav-open')));document.querySelectorAll('.topbar nav a').forEach(a=>a.addEventListener('click',()=>setNav(false)));document.addEventListener('keydown',event=>{if(event.key==='Escape')setNav(false);});const wide=window.matchMedia('(min-width:721px)');const onWide=()=>{if(wide.matches)setNav(false);};if(wide.addEventListener)wide.addEventListener('change',onWide);else if(wide.addListener)wide.addListener(onWide);}
+
 // Appearance: light / dark / follow-system, persisted locally.
 const appearanceSelect=document.querySelector('#appearance');
 let savedAppearance='auto';try{savedAppearance=localStorage.getItem('spacelibre.appearance')||'auto';}catch(e){}

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.15 - 2026-10-14
+
+- Collapse the header section list (编排 / 规范 / 色彩 / 延展 / 影像 / 应用 / 下载) into a toggle menu on phones, so the navigation no longer wraps onto several rows.
+- Add the `菜单` accessible label to all 21 translations; close the menu on link tap, on `Escape` and when returning to a wide viewport; reflect state with `aria-expanded`.
+- Verify: `npm test` and `npm run check` pass at 1.5.15.
+
 ## 1.5.14 - 2026-10-14
 
 - Add a light/dark appearance choice (follow system / light / dark) that adapts the whole site, including `color-scheme`, the browser theme color and the recolored SVG logos.
