@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.17 - 2026-10-14
+
+- On phones, collapse the 全站配色 bar into a single compact row: hide the title, status dot and note, and keep only the two selectors, which split the width evenly and follow the window. This replaces the two-row layout from 1.5.16, which the owner found took too much space.
+- Tighten the mobile bar padding (8px) so the sticky bar uses less vertical space.
+- Verify: `npm ci`, `npm test` and `npm run check` pass at 1.5.17.
+
 ## 1.5.16 - 2026-10-14
 
 - Fix the mobile 全站配色 bar: the label keeps to one line and the two selects now share a single fluid row that follows the window width, instead of being pinned to a hard-coded 150–160px and squeezing the text into multiple lines.
