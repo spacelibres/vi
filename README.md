@@ -1,3 +1,16 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="01-logos/horizontal-reverse.svg">
+    <img alt="spacelibre" src="01-logos/horizontal-primary.svg" width="420">
+  </picture>
+</p>
+
+<p align="center">
+  <a href="https://github.com/spacelibres/vi/actions/workflows/verify-release.yml"><img alt="Verify and release" src="https://github.com/spacelibres/vi/actions/workflows/verify-release.yml/badge.svg"></a>
+  <a href="https://github.com/spacelibres/vi/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/spacelibres/vi"></a>
+  <a href="https://vi.spacelibre.cn/"><img alt="Website" src="https://img.shields.io/badge/site-vi.spacelibre.cn-007BFF"></a>
+</p>
+
 # spacelibre VI
 
 spacelibre 的 SVG 视觉识别资产、互动 VI 手册和可复用设计 skill。当前版本见 [VERSION](VERSION)，全部变更见 [CHANGELOG.md](CHANGELOG.md)。

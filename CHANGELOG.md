@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.8 - 2026-10-14
+
+- Add the horizontal wordmark (light and dark variants) and status badges to the top of the README so the identity is visible directly on GitHub.
+- Complete the repository presentation on GitHub: description, homepage link and topics.
+- Verify README assets resolve and validation stays green: `npm test` and `npm run check` pass at 1.5.8.
+
 ## 1.5.7 - 2026-10-14
 
 - Add a binding rulebook for automated contributors (`AGENTS.md` and `.rules`): every change must be a patch release with a CHANGELOG entry and an annotated tag.
