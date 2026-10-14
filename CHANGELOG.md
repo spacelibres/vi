@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.19 - 2026-10-14
+
+- Replace the three platform `<select>` controls (language, appearance, full-site palette) with self-drawn dropdowns, so the closed control and the option list render the same on every phone instead of drifting with the OS widget. The native `<select>` stays in the DOM as the hidden data source, keeping all existing behaviour and the accessible labels intact.
+- Draw the option list as a floating panel (right-aligned, viewport-bounded, scrollable) rather than a platform popup.
+- On phones, the collapsed section menu now floats over the page instead of pushing the content down, and closes on an outside tap.
+- Verify: `npm ci`, `npm test` and `npm run check` pass at 1.5.19.
+
 ## 1.5.18 - 2026-10-14
 
 - Make the chosen palette portable and reusable: the colour lab now copies the generated system as `复制 CSS 变量` (a ready-to-paste `:root` block of the 16 roles) and `复制 JSON 令牌` (the same tokens in the skill's `palette-tokens.json` shape), so future sites and apps can adopt the user's primary.
