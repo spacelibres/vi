@@ -20,7 +20,7 @@ python -m http.server 8765
 
 ## 版本控制
 
-严格按 [版本规则](docs/versioning.md)维护：每个验证完成的小里程碑递增 patch、更新日志、提交并打不可变的 annotated tag。package.json、锁文件、VERSION、页面标注和标签保持一致。GitHub Actions 对 main / PR 做验证，对版本标签验证后创建 Release 和下载包。旧版本保留，不移动标签、不强制覆盖历史。
+严格按 [版本规则](docs/versioning.md)维护：每个验证完成的小里程碑递增 patch、更新日志、提交并打不可变的 annotated tag。package.json、锁文件、VERSION、页面标注和标签保持一致。GitHub Actions 对 main / PR 做验证，对版本标签验证后创建 Release 和下载包。旧版本保留，不移动标签、不强制覆盖历史。自动化贡献者与 AI agent 必须遵守强制流程 [AGENTS.md](AGENTS.md)（同时提供 [.rules](.rules)）。
 
 ## 统一视觉 skill
 

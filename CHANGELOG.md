@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.7 - 2026-10-14
+
+- Add a binding rulebook for automated contributors (`AGENTS.md` and `.rules`): every change must be a patch release with a CHANGELOG entry and an annotated tag.
+- Spell out the mandatory per-change procedure in `docs/versioning.md` and link the rulebook from the README.
+- Verify the rulebook keeps validation green: `npm test` and `npm run check` pass at 1.5.7.
+
 ## 1.5.6 - 2026-10-14
 
 - Add one-click Caddy deployment tooling for the vi.spacelibre.cn static site: server-side install script, local wrapper, and a reference site block.

@@ -1,0 +1,29 @@
+# MANDATORY RULES — spacelibre VI (read before every change)
+
+These rules are non-negotiable. Follow them on EVERY change, with no exceptions
+for "small", "docs", "tooling" or "deploy" changes. The canonical policy is
+docs/versioning.md and the fuller rulebook is AGENTS.md.
+
+## Every change MUST be a release, in one commit
+
+1. Bump PATCH by one with the repository script (never hand-edit versions):
+       node scripts/set-version.mjs <MAJOR.MINOR.PATCH>
+   This keeps package.json, VERSION, package-lock.json and the UI labels / ?v=
+   cache-busting queries in index.html in sync.
+2. Prepend a new "## <version> - <YYYY-MM-DD>" section to CHANGELOG.md (English,
+   matching the existing style), describing what changed and what was verified.
+3. Verify: `npm ci && npm test && npm run check` must all pass.
+4. Commit with a descriptive message ending in `(v<version>)`.
+5. Create the matching ANNOTATED tag `v<version>` on the release commit and push
+   it. CI publishes the GitHub Release automatically. The tag must equal v$(cat VERSION).
+
+## Never do these
+
+- Never push to main without a patch bump AND a CHANGELOG entry.
+- Never move, delete or reuse a published tag.
+- Never force-push a published branch or rewrite published history.
+- Never commit tokens, credentials, .env files or generated artifacts
+  (artifacts/, *.zip, node_modules/).
+
+If the version, scope or changelog wording is ambiguous, ask the owner BEFORE
+committing instead of guessing.
