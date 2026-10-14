@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.10 - 2026-10-14
+
+- Refine the version policy: only substantive changes to the deliverable are committed and released; purely local changes (environment, installed skills, temporary and generated files) are left uncommitted.
+- Update `AGENTS.md`, `.rules` and `docs/versioning.md` with the "what to commit" / "do not commit" wording.
+- Verify the policy docs keep validation green: `npm test` and `npm run check` pass at 1.5.10.
+
 ## 1.5.9 - 2026-10-14
 
 - Add a Nebula Spectrum (preset 03) icon set under `icons/nebula`: light and reverse marks, a deep-background app icon, light and reverse wordmarks, plus PNG exports for avatars and favicons.

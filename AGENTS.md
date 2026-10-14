@@ -5,12 +5,24 @@ changes this repository. Read it before your first edit and follow it on every
 change. The canonical policy is [`docs/versioning.md`](docs/versioning.md); if
 this file and that document ever disagree, `docs/versioning.md` wins.
 
-## 1. Non-negotiable: version + release discipline
+## 1. What to commit
 
-**Every change MUST land as a release, in a single commit.** There are no
-exceptions for "small", "tooling", "docs" or "deploy" changes.
+Commit only **substantive changes to the deliverable** — the site, vector
+assets, palette engine, the reusable skill, or tooling that ships with them.
+When you make such a change, that single commit **is** a release and follows the
+full procedure in section 2.
 
-For each and every change you make:
+**Do not commit** (leave these local — no commit, no CHANGELOG, no release):
+
+- Purely local changes: environment and OS configuration, installed skills
+  (`~/.agents/skills`, `~/.codex/skills`), editor or machine settings.
+- Temporary or generated files: scratch scripts, `node_modules/`, `artifacts/`,
+  `*.zip`, caches.
+- Trivial wording or formatting tweaks that do not change the deliverable.
+
+Batch small edits, or leave them local, rather than opening a release for them.
+
+## 2. Release procedure (for substantive changes)
 
 1. **Bump PATCH by one** using the repository script — never edit versions by hand:
 
@@ -44,8 +56,8 @@ For each and every change you make:
 
 ### Absolute prohibitions
 
-- **NEVER** push a commit to `main` that does not bump the patch version *and*
-  add a CHANGELOG entry.
+- **NEVER** push a commit to `main` without a patch bump *and* a CHANGELOG entry —
+  every pushed commit is a release.
 - **NEVER** move, delete, or reuse a published tag.
 - **NEVER** force-push a published branch or rewrite published history.
 - **NEVER** put tokens, credentials, `.env` files or local secrets into source
@@ -55,18 +67,18 @@ For each and every change you make:
 If the correct version, the changelog wording, or the scope is ambiguous,
 **ask the owner before committing** rather than guessing.
 
-## 2. Repository map
+## 3. Repository map
 
 - `index.html`, `styles.css`, `app.js`, `svg-sources.js` — the static VI site
   (no Node runtime required; Node is only used for verification/build).
-- `01-logos/` … `07-palettes/`, `icons/`, `05-imagery/` — vector and image assets.
+- `01-logos/` … `07-palettes/`, `icons/` (incl. `icons/nebula/`), `05-imagery/` — vector and image assets.
 - `scripts/` — `set-version.mjs` (version sync), `validate.mjs` (`npm run check`),
   `build_artifacts.py` (`npm run build`).
 - `tests/` — Node test suite (`npm test`).
 - `docs/versioning.md` — the canonical version and release policy.
 - `deploy/` — deployment tooling for `vi.spacelibre.cn` (see `deploy/README.md`).
 
-## 3. Verification commands
+## 4. Verification commands
 
 ```sh
 npm ci            # install pinned dev dependencies

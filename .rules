@@ -1,10 +1,11 @@
 # MANDATORY RULES — spacelibre VI (read before every change)
 
-These rules are non-negotiable. Follow them on EVERY change, with no exceptions
-for "small", "docs", "tooling" or "deploy" changes. The canonical policy is
-docs/versioning.md and the fuller rulebook is AGENTS.md.
+The canonical policy is docs/versioning.md and the fuller rulebook is AGENTS.md.
 
-## Every change MUST be a release, in one commit
+## What to commit
+
+Commit only SUBSTANTIVE changes to the deliverable. When you do, that commit IS a
+release, in one commit:
 
 1. Bump PATCH by one with the repository script (never hand-edit versions):
        node scripts/set-version.mjs <MAJOR.MINOR.PATCH>
@@ -17,13 +18,25 @@ docs/versioning.md and the fuller rulebook is AGENTS.md.
 5. Create the matching ANNOTATED tag `v<version>` on the release commit and push
    it. CI publishes the GitHub Release automatically. The tag must equal v$(cat VERSION).
 
+## Do NOT commit
+
+Leave these local — do not open a commit or release for them:
+
+- Purely local changes: environment and OS config, installed skills
+  (~/.agents/skills, ~/.codex/skills), editor settings.
+- Temporary or generated files: scratch scripts, node_modules/, artifacts/,
+  *.zip, caches.
+- Trivial wording or formatting tweaks that do not change the deliverable.
+
+Batch small edits or leave them local instead of making a release.
+
 ## Never do these
 
-- Never push to main without a patch bump AND a CHANGELOG entry.
+- Never push to main without a patch bump AND a CHANGELOG entry: every pushed
+  commit is a release.
 - Never move, delete or reuse a published tag.
 - Never force-push a published branch or rewrite published history.
-- Never commit tokens, credentials, .env files or generated artifacts
-  (artifacts/, *.zip, node_modules/).
+- Never commit tokens, credentials, .env files or generated artifacts.
 
 If the version, scope or changelog wording is ambiguous, ask the owner BEFORE
 committing instead of guessing.
