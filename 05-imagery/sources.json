@@ -1,0 +1,20 @@
+[
+  {
+    "file": "cosmic-cliffs.png",
+    "title": "Cosmic Cliffs / 宇宙悬崖",
+    "source": "https://science.nasa.gov/missions/webb/nasas-webb-reveals-cosmic-cliffs-glittering-landscape-of-star-birth/",
+    "credit": "NASA, ESA, CSA, STScI"
+  },
+  {
+    "file": "pillars-of-creation.png",
+    "title": "Pillars of Creation / 创生之柱",
+    "source": "https://science.nasa.gov/asset/webb/pillars-of-creation-nircam-image/",
+    "credit": "NASA, ESA, CSA, STScI; Image Processing: Joseph DePasquale, Anton Koekemoer, Alyssa Pagan (STScI)"
+  },
+  {
+    "file": "webb-deep-field.png",
+    "title": "Webb Deep Field / 深空星系",
+    "source": "https://science.nasa.gov/asset/webb/webbs-first-deep-field-unveiled-nircam-image/",
+    "credit": "NASA, ESA, CSA, STScI"
+  }
+]

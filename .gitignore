@@ -1,0 +1,7 @@
+node_modules/
+artifacts/
+*.zip
+.env
+.env.*
+__pycache__/
+.DS_Store

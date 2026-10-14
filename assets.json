@@ -1,0 +1,98 @@
+[
+  {
+    "file": "04-applications/avatar-square-1024.svg",
+    "name": "品牌头像",
+    "size": "1024 × 1024",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/business-card-back-96x60mm-bleed.svg",
+    "name": "名片 · 背面",
+    "size": "96mm × 60mm",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/business-card-front-96x60mm-bleed.svg",
+    "name": "名片 · 正面",
+    "size": "96mm × 60mm",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/digital-banner-1920x640.svg",
+    "name": "数字横幅",
+    "size": "1920 × 640",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/email-signature-800x240.svg",
+    "name": "邮件签名",
+    "size": "800 × 240",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/letterhead-A4.svg",
+    "name": "A4 信纸",
+    "size": "210mm × 297mm",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/poster-A3.svg",
+    "name": "A3 海报",
+    "size": "297mm × 420mm",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/presentation-closing-1920x1080.svg",
+    "name": "演示文稿 · 结束",
+    "size": "1920 × 1080",
+    "category": "presentation"
+  },
+  {
+    "file": "04-applications/presentation-content-1920x1080.svg",
+    "name": "演示文稿 · 内容",
+    "size": "1920 × 1080",
+    "category": "presentation"
+  },
+  {
+    "file": "04-applications/presentation-cover-1920x1080.svg",
+    "name": "演示文稿 · 封面",
+    "size": "1920 × 1080",
+    "category": "presentation"
+  },
+  {
+    "file": "04-applications/presentation-section-1920x1080.svg",
+    "name": "演示文稿 · 章节",
+    "size": "1920 × 1080",
+    "category": "presentation"
+  },
+  {
+    "file": "04-applications/report-cover-A4.svg",
+    "name": "A4 报告封面",
+    "size": "210mm × 297mm",
+    "category": "print"
+  },
+  {
+    "file": "04-applications/social-landscape-1200x630.svg",
+    "name": "社交媒体 · 横向",
+    "size": "1200 × 630",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/social-square-1080x1080.svg",
+    "name": "社交媒体 · 方形",
+    "size": "1080 × 1080",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/social-story-1080x1920.svg",
+    "name": "社交媒体 · 竖向",
+    "size": "1080 × 1920",
+    "category": "digital"
+  },
+  {
+    "file": "04-applications/website-header-1440x160.svg",
+    "name": "网站导航",
+    "size": "1440 × 160",
+    "category": "digital"
+  }
+]

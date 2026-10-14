@@ -1,0 +1,4 @@
+const fs=require('node:fs'),vm=require('node:vm');const {DOMParser}=require('linkedom');const source=fs.readFileSync('app.js','utf8');
+function extract(name){const start=source.indexOf('function '+name+'(');if(start<0)throw Error('Missing function '+name);let i=source.indexOf('{',start)+1,depth=1;for(;depth&&i<source.length;i++){if(source[i]==='{')depth++;else if(source[i]==='}')depth--;}return source.slice(start,i);}
+const context=vm.createContext({document:{querySelector:()=>null},DOMParser,XMLSerializer:class{serializeToString(root){return root.toString();}}});for(const name of ['hexToHsl','hslToHex','luminance','contrast','fitContrast','mixHex','generatePalette','themePaint','renderThemedSvg'])vm.runInContext(extract(name),context);
+module.exports={...Object.fromEntries(['generatePalette','contrast','mixHex','renderThemedSvg'].map(k=>[k,context[k]])),DOMParser};
