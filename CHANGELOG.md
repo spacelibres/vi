@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.11 - 2026-10-14
+
+- Make the site follow its own manual: snap the layout to the 8px spacing rhythm with `--space-*` tokens, raise h1 into the documented 48–80px display range in Arial Bold, and bring the header/footer wordmarks to the 240px minimum with an icon swap on small screens.
+- Replace the remaining ad-hoc colors (photo card background, error text, swatch outline) with palette tokens.
+- Enforce the manual in CI: `scripts/validate.mjs` now also checks the typography scale, the 8px spacing rhythm, spacing tokens, logo minimum sizes and token-only colors.
+- Verify: `npm test` and `npm run check` pass at 1.5.11.
+
 ## 1.5.10 - 2026-10-14
 
 - Refine the version policy: only substantive changes to the deliverable are committed and released; purely local changes (environment, installed skills, temporary and generated files) are left uncommitted.

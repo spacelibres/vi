@@ -89,4 +89,7 @@ npm run build     # build release archives (generated, never committed)
 
 `npm run check` currently runs `scripts/validate.mjs`, which among other things
 fails if the version files disagree, if a referenced asset is missing, or if a
-credential-like string appears in source.
+credential-like string appears in source. It also enforces the manual's own
+rules on the site itself: the typography scale (主标题 48–80, 分区标题 28–40,
+正文 16–20), the 8px spacing rhythm and `--space-*` tokens, the logo minimum
+sizes, and token-only colors.
