@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.6 - 2026-10-14
+
+- Add one-click Caddy deployment tooling for the vi.spacelibre.cn static site: server-side install script, local wrapper, and a reference site block.
+- Add a GitHub Webhook receiver that verifies the HMAC signature and triggers an idempotent redeploy on push and release, exposed through Caddy at /hooks/deploy.
+- Persist the webhook secret and read it per request so routine redeploys and secret rotation never break GitHub signature verification.
+- Verify the deployment end to end: Caddy file_server on 443, HTTP-to-HTTPS redirect, signed and unsigned webhook responses, and an automatic sync from a pushed commit.
+
 ## 1.5.5 - 2026-10-14
 
 - Restore black, white and navy monochrome logo variants to one original ink across all theme changes and SVG downloads.
