@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="01-logos/horizontal-reverse.svg">
-    <img alt="spacelibre" src="01-logos/horizontal-primary.svg" width="420">
+    <source media="(prefers-color-scheme: dark)" srcset="icons/nebula/wordmark-reverse.svg">
+    <img alt="spacelibre" src="icons/nebula/wordmark.svg" width="420">
   </picture>
 </p>
 

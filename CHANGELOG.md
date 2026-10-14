@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.9 - 2026-10-14
+
+- Add a Nebula Spectrum (preset 03) icon set under `icons/nebula`: light and reverse marks, a deep-background app icon, light and reverse wordmarks, plus PNG exports for avatars and favicons.
+- Switch the README wordmark to the Nebula Spectrum variant so the identity reads more vividly on GitHub.
+- Verify the new vector assets pass validation: `npm test` and `npm run check` pass at 1.5.9.
+
 ## 1.5.8 - 2026-10-14
 
 - Add the horizontal wordmark (light and dark variants) and status badges to the top of the README so the identity is visible directly on GitHub.
