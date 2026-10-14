@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.13 - 2026-10-14
+
+- Fix the sticky theme bar jitter: its offset is now measured from the real top bar height (`--topbar-h`) instead of a hard-coded `66px`, so it no longer slides under the frosted top bar while scrolling.
+- Drop the redundant `backdrop-filter` on the theme bar; two stacked blurred sticky layers were a scroll-jank source.
+- Verify: `npm test` and `npm run check` pass at 1.5.13.
+
 ## 1.5.12 - 2026-10-14
 
 - Add client-side internationalization: the site auto-detects the visitor's language (`?lang` → saved choice → `navigator.languages`), ships 22 languages (including RTL Arabic, Hebrew and Persian) and offers a language switcher.

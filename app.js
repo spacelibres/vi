@@ -47,3 +47,11 @@ function applyGlobalTheme(palette){const p={...palette};p.onPrimary=contrast(p.p
 document.querySelector('#global-theme').addEventListener('change',event=>{if(event.target.value==='custom'){harmony.value='auto';clearPresets();updatePalette(picker.value);document.querySelector('.color-lab').scrollIntoView({behavior:'smooth',block:'start'});return;}const index=Number(event.target.value);if(Number.isInteger(index)&&presetData[index])document.querySelector('.preset[data-preset="'+index+'"]').click();});
 let startingTheme={hex:'#007BFF',mode:'split'};try{const stored=JSON.parse(localStorage.getItem('spacelibre.vi.theme'));if(stored&&/^#[0-9a-f]{6}$/i.test(stored.hex)&&['auto','split','triad','analogous'].includes(stored.mode))startingTheme=stored;}catch{}
 harmony.value=startingTheme.mode;const initialIndex=presetData.findIndex(p=>p.hex.toUpperCase()===startingTheme.hex.toUpperCase()&&p.mode===startingTheme.mode);clearPresets();if(initialIndex>=0){const button=document.querySelector('.preset[data-preset="'+initialIndex+'"]');button.classList.add('active');button.setAttribute('aria-pressed','true');}updatePalette(startingTheme.hex);
+
+// Keep the sticky theme bar exactly below the (variable-height) sticky top bar.
+const topbarEl=document.querySelector(".topbar");
+function syncChromeHeight(){if(topbarEl)document.documentElement.style.setProperty("--topbar-h",topbarEl.offsetHeight+"px");}
+syncChromeHeight();
+if(window.ResizeObserver&&topbarEl){new ResizeObserver(syncChromeHeight).observe(topbarEl);}
+window.addEventListener("resize",syncChromeHeight);
+window.addEventListener("load",syncChromeHeight);
