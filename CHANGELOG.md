@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.4 - 2026-10-14
+
+- Align handoff instructions with theme-aware logo colors and editable text in new application SVGs.
+- Align the reusable skill with the manual's 240px horizontal-wordmark guidance.
+- Verify website theme, SVG download parity, application search and the tagged GitHub release pipeline.
+
 ## 1.5.3 - 2026-10-14
 
 - Package the approved VI as a reusable spacelibre-vi skill with vector masters, portable palette engine and document rules.

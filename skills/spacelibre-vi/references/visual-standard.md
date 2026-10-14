@@ -3,7 +3,7 @@
 ## Logo
 - Use `horizontal-primary.svg`, `stacked-primary.svg` and `icon-primary.svg` masters. Lowercase spacelibre lettering is outlined geometry, not a substitute typeface. Horizontal composition suits navigation and wide canvases; stacked suits square or tall canvases; icon suits compact UI and favicon.
 - The master planet is one circle centered at (775,405), radius171, stroke30 (outer186/inner156). Its orbital mask supplies the intentional crossing and 6-unit clearance. Preserve all paths, transforms, masking and tapered orbit tips; never independently draw upper/lower arcs. Do not stretch, rotate the logo or add effects. Standalone decorative orbits may rotate.
-- Clear space: reserve at least 0.25 of the logo SVG canvas height externally. At small sizes use the icon, test at 16/24/32px and use the supplied favicon where required. For detailed full wordmarks start around 160px wide and judge the actual canvas rather than treating a number as universal.
+- Clear space: reserve at least 0.25 of the logo SVG canvas height externally. At small sizes use the icon, test at 16/24/32px and use the supplied favicon where required. For detailed full wordmarks start around 240px wide and judge the actual canvas rather than treating a number as universal.
 - Color roles: orbit = contextual primary; planet = contextual auxiliary; wordmark = readable foreground with the libre portion following contextual primary. Canonical monochrome artwork remains available for single-ink production; customized full-color previews must recolor the planet.
 
 ## Full palette
