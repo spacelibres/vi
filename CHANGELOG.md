@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.18 - 2026-10-14
+
+- Make the chosen palette portable and reusable: the colour lab now copies the generated system as `复制 CSS 变量` (a ready-to-paste `:root` block of the 16 roles) and `复制 JSON 令牌` (the same tokens in the skill's `palette-tokens.json` shape), so future sites and apps can adopt the user's primary.
+- Add `复制分享链接`, which builds a `?primary=<hex>&mode=<harmony>` URL; the page now reads those parameters on load, so a palette can be shared, bookmarked or reloaded anytime, and presets stay one click away.
+- Add the four new UI strings to all 21 translations.
+- Verify: `npm ci`, `npm test` and `npm run check` pass at 1.5.18.
+
 ## 1.5.17 - 2026-10-14
 
 - On phones, collapse the 全站配色 bar into a single compact row: hide the title, status dot and note, and keep only the two selectors, which split the width evenly and follow the window. This replaces the two-row layout from 1.5.16, which the owner found took too much space.

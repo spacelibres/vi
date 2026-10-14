@@ -8,6 +8,8 @@
 .palette-downloads{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px 24px}.palette-downloads h4{width:100%;font-size:15px;margin:0 0 5px}.palette-downloads a{font:12px Consolas,monospace;color:var(--blue)}
 
 .lab-chip strong{overflow-wrap:anywhere}.space-credit h3{font-size:18px;letter-spacing:0;line-height:1.5}
+/* Portable design tokens: copy the chosen palette into other sites and apps. */
+.lab-export{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.token-button{padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--card,#fff);color:var(--navy);font-size:13px}.token-button:hover{border-color:var(--blue);color:var(--blue)}
 /* i18n: language picker, RTL mirroring and CJK/Arabic font stacks */
 .lang-picker{display:flex;align-items:center}
 .lang-picker select{height:32px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card,#fff);color:var(--muted);font-size:12px}
