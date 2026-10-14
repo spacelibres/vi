@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.5 - 2026-10-14
+
+- Restore black, white and navy monochrome logo variants to one original ink across all theme changes and SVG downloads.
+- Explicitly mark all nine monochrome masters and bypass auxiliary recoloring in both website and portable skill renderer.
+- Clarify that auxiliary planet colors apply only to full-color variants; include monochrome masters in the installed skill.
+- Add regression coverage for all nine monochrome variants under six presets and a custom primary.
+
 ## 1.5.4 - 2026-10-14
 
 - Align handoff instructions with theme-aware logo colors and editable text in new application SVGs.
