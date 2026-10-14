@@ -233,10 +233,11 @@ write_caddy_config() {
     printf '\t\tReferrer-Policy "strict-origin-when-cross-origin"\n'
     printf '\t}\n'
     printf '\n'
-    printf '\t# 缓存：静态资源交给浏览器缓存；HTML 与 Service Worker 必须回源校验。\n'
-    printf '\theader Cache-Control "public, max-age=604800, stale-while-revalidate=86400"\n'
+    printf '\t# 缓存：静态资源长缓存；HTML 与 Service Worker 必须回源校验。\n'
     printf '\t@revalidate path / /index.html /sw.js\n'
+    printf '\t@static not path / /index.html /sw.js\n'
     printf '\theader @revalidate Cache-Control "no-cache"\n'
+    printf '\theader @static Cache-Control "public, max-age=604800, stale-while-revalidate=86400"\n'
     printf '}\n'
     printf '%s\n' "$END_MARK"
   } >> "$tmp"

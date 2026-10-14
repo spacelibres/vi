@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.21 - 2026-10-14
+
+- Fix the server cache rules so the HTML and `sw.js` are revalidated (`no-cache`) instead of being cached for a week. The two cache policies now use mutually exclusive matchers instead of relying on Caddy's header override order, which had let the long-cache rule win on every path.
+- Verify: `npm ci`, `npm test` and `npm run check` pass at 1.5.21.
+
 ## 1.5.20 - 2026-10-14
 
 - Add a service worker (`sw.js`): it keeps the whole site in a cache and serves repeat visits from that cache instead of re-requesting files, revalidating in the background so new releases still arrive, with an offline fallback to the cached shell.

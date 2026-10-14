@@ -35,10 +35,11 @@ vi.spacelibre.cn {
 		Referrer-Policy "strict-origin-when-cross-origin"
 	}
 
-	# 缓存：静态资源交给浏览器缓存；HTML 与 Service Worker 必须回源校验。
-	header Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
+	# 缓存：静态资源长缓存；HTML 与 Service Worker 必须回源校验。
 	@revalidate path / /index.html /sw.js
+	@static not path / /index.html /sw.js
 	header @revalidate Cache-Control "no-cache"
+	header @static Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
 }
 
 # Caddy 默认自动：
