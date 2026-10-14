@@ -1,0 +1,20 @@
+# Approved visual rules
+
+## Logo
+- Use `horizontal-primary.svg`, `stacked-primary.svg` and `icon-primary.svg` masters. Lowercase spacelibre lettering is outlined geometry, not a substitute typeface. Horizontal composition suits navigation and wide canvases; stacked suits square or tall canvases; icon suits compact UI and favicon.
+- The master planet is one circle centered at (775,405), radius171, stroke30 (outer186/inner156). Its orbital mask supplies the intentional crossing and 6-unit clearance. Preserve all paths, transforms, masking and tapered orbit tips; never independently draw upper/lower arcs. Do not stretch, rotate the logo or add effects. Standalone decorative orbits may rotate.
+- Clear space: reserve at least 0.25 of the logo SVG canvas height externally. At small sizes use the icon, test at 16/24/32px and use the supplied favicon where required. For detailed full wordmarks start around 160px wide and judge the actual canvas rather than treating a number as universal.
+- Color roles: orbit = contextual primary; planet = contextual auxiliary; wordmark = readable foreground with the libre portion following contextual primary. Canonical monochrome artwork remains available for single-ink production; customized full-color previews must recolor the planet.
+
+## Full palette
+Generate 16 roles: primary, secondary, accent, deep, surface, ink, card, muted, line, success, warning, danger, primaryOnLight, primaryOnDark, planetOnLight, planetOnDark. Use the portable engine rather than copying ad hoc fixed colors. Six approved starting presets are blue, mint, violet, orange, teal and lime. Auto harmony chooses triadic, analogous or split-complementary relationships; users can override that relationship.
+Keep exact selected primary and use contextual shades for legibility. Normal text needs 4.5:1; large text 3:1. Contextual logo strokes are adjusted to 4.5:1 in the engine. Check photo backgrounds separately. Use primary/secondary/accent boldly in spacious decorative regions while maintaining readable surfaces; status colors retain semantic meaning.
+Changing the theme must affect the whole page, not only its palette panel: navigation, backgrounds, cards, headlines, buttons, illustration strokes, gradient stops, favicon, photo tints and downloads. A fixed planet or an unchanging application gallery is a failed implementation.
+
+## Composition and typography
+Decorative orbital curves are continuous, layered behind content and faded naturally into space. Avoid visible internal endpoints, abrupt seams, mismatched layers, opaque cover-up blocks, and intersecting type. Put emphatic color in the outer canvas or between content areas; preserve breathing room and align useful information to a consistent grid. Official logo crossing is intentional and must remain.
+Use Arial / Arial Bold for ordinary Latin text, system sans-serif fallbacks for Chinese, Consolas or monospace for technical metadata. The logo remains supplied vector outlines. Use an 8px screen spacing rhythm where useful; adapt layout to the content. For A4, begin with 20mm margins, body10.5pt/15pt leading, headings24/16/12pt. Respect user templates and real printing constraints. Cards should not become empty decorative boxes in finished work: sample placeholders are only template content.
+
+## Medium and verification
+Native vectors: SVG. Interactive manual and reading/navigation: HTML/CSS/JS. Real astronomical photography may support backgrounds; use the supplied NASA source/credit manifest, preserve attribution and never imply NASA endorsement. Do not rasterize vector deliverables into photographs or screenshots as the final artifact.
+Check every used logo for distortion, actual small-size clarity, safe space and custom auxiliary coloring. Inspect responsive overflow, stacking, contrast, download/preview parity and continuous gradient/mask treatment. Structural mask and clipping colors must not be themed. Semantic `data-color-role`, `data-stroke-role`, `data-stop-role` attributes are authoritative; resolve context before calling the renderer. Use unique SVG IDs when combining assets into one DOM.

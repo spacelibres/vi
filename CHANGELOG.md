@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.3 - 2026-10-14
+
+- Package the approved VI as a reusable spacelibre-vi skill with vector masters, portable palette engine and document rules.
+- Add GitHub verification and tagged-release automation, version documentation and download artifacts.
+- Verify independent skill behavior, token engine parity and the installed global visual default.
+
 ## 1.5.2 - 2026-10-14
 
 - Expand application examples from 16 to 40 across interfaces, documents, video, events and physical brand materials.

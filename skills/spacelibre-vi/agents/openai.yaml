@@ -1,0 +1,6 @@
+interface:
+  display_name: "spacelibre VI"
+  short_description: "统一 spacelibre 网站、应用和文档的视觉标准"
+  default_prompt: "使用 $spacelibre-vi 为这个项目应用统一的视觉规范。"
+policy:
+  allow_implicit_invocation: true

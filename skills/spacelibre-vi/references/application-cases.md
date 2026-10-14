@@ -1,0 +1,44 @@
+# Application inventory
+
+Use cases relevant to the requested deliverable; do not force all 40 into each project. Source SVGs live under `04-applications/` in the repository.
+
+- architecture-canvas-1600x1000.svg
+- avatar-square-1024.svg
+- business-card-back-96x60mm-bleed.svg
+- business-card-front-96x60mm-bleed.svg
+- certificate-A4.svg
+- developer-dashboard-1440x1000.svg
+- digital-banner-1920x640.svg
+- documentation-cover-1600x900.svg
+- email-signature-800x240.svg
+- envelope-DL.svg
+- error-page-1440x900.svg
+- event-ticket-1600x700.svg
+- exhibition-backdrop-2400x1200.svg
+- identity-badge-600x900.svg
+- lanyard-1600x360.svg
+- letterhead-A4.svg
+- login-screen-1200x900.svg
+- mobile-settings-1080x1920.svg
+- mobile-welcome-1080x1920.svg
+- newsletter-header-1200x500.svg
+- packaging-sleeve-1600x800.svg
+- poster-A3.svg
+- presentation-closing-1920x1080.svg
+- presentation-content-1920x1080.svg
+- presentation-cover-1920x1080.svg
+- presentation-section-1920x1080.svg
+- release-announcement-1080x1080.svg
+- report-cover-A4.svg
+- repository-cover-1280x640.svg
+- shirt-print-1200x1400.svg
+- social-landscape-1200x630.svg
+- social-square-1080x1080.svg
+- social-story-1080x1920.svg
+- sticker-sheet-1200x1200.svg
+- tote-print-1200x1400.svg
+- video-endcard-1920x1080.svg
+- video-lower-third-1920x300.svg
+- wayfinding-1600x700.svg
+- website-header-1440x160.svg
+- website-hero-1440x900.svg

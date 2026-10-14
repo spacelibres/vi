@@ -1,17 +1,33 @@
-# spacelibre VI 1.5 · vi.spacelibre.cn
+# spacelibre VI
 
-打开 index.html 查看网页。站点为静态 HTML/CSS/JavaScript，可离线使用。
+spacelibre 的 SVG 视觉识别资产、互动 VI 手册和可复用设计 skill。当前版本见 [VERSION](VERSION)，全部变更见 [CHANGELOG.md](CHANGELOG.md)。
 
-全站配色：顶部六套预设控制背景、文字、卡片、按钮、46 个 SVG 显示位置、图标以及 NASA 背景遮罩。选择“自定义 · 智能生成”，选定主色即可自动推荐色彩关系并生成 14 个角色：主色、辅色、强调色、深底、浅底、正文、卡片、次级文字、边框、成功、警告、错误、浅底主色阶、深底主色阶。
+已确认的星球轨道 logo 同时用于页头、横向/纵向编排和 favicon。六套预设与自定义主色会生成 16 个色彩角色，并同步整个页面、40 个应用场景、图标、轨道渐变及单个 SVG 下载。星球圆环采用辅色的可读色阶，轨道采用主色的可读色阶；结构性遮罩保持原样。
 
-文字与主色阶按实际色值计算对比度并调整明度；不同背景使用不同主色阶。主色输入保留，整个系统保持同一色相方向。色彩基于规则与对比度计算自动生成。图片背景仍需按实际场景检查可读性。
+40 个应用模板涵盖品牌物料、网站/移动端、开发者工具、文档、活动、服装、包装和视频。轨道装饰位于内容后方，采用连续曲线和渐隐处理。模板中的姓名、标题和联系方式为可替换内容。
 
-配色会保存在当前浏览器中。单个 SVG 下载跟随当前全站配色；六套独立配色板固定展示各自的完整色系。spacelibre-svg-assets.zip 为原始矢量母版与六套配色板合集。
+## 运行与检查
 
-资产：50 个设计 SVG + 1 个 favicon SVG；5 个图标 PNG；3 张 NASA 官方发布影像，原始来源和署名见 05-imagery/sources.json。07-palettes/palette-tokens.json 包含六套 14 色的参数。
+```sh
+npm ci
+npm test
+npm run check
+npm run build
+python -m http.server 8765
+```
 
-网页文字可直接编辑，标志与多数应用模板文字是矢量轮廓。名片：成品 90×54 mm，文件 96×60 mm，四周 3 mm 出血。A4/A3 为成品尺寸，出血按印厂要求添加。RGB 色彩需按输出配置转换并打样。
+访问 http://localhost:8765/ 。网页本身无需 Node 服务；Node 仅用于验证。构建输出为 `spacelibre-svg-assets.zip` 和 `artifacts/spacelibre-vi-<version>.zip`。单个 SVG 的网页下载包含当前配色；合集保留母版与预设配色板。
 
-站点图标与页面品牌标志均来自已确认的 spacelibre 星球轨道标志。canonical、站点标题、manifest 已按 vi.spacelibre.cn 准备；不代表 DNS、证书或线上部署已经完成。发布时把本目录作为静态站点根目录。
+## 版本控制
 
-VI 1.5：16 个应用模板加入明确的主色、辅色、强调色构图。色域、轨道色带与彩色边栏随全站配色联动，单独下载 SVG 包含当前颜色。
+严格按 [版本规则](docs/versioning.md)维护：每个验证完成的小里程碑递增 patch、更新日志、提交并打不可变的 annotated tag。package.json、锁文件、VERSION、页面标注和标签保持一致。GitHub Actions 对 main / PR 做验证，对版本标签验证后创建 Release 和下载包。旧版本保留，不移动标签、不强制覆盖历史。
+
+## 统一视觉 skill
+
+完整 skill 位于 [skills/spacelibre-vi](skills/spacelibre-vi/SKILL.md)。复制该目录到 `~/.codex/skills/spacelibre-vi` 后可使用 `$spacelibre-vi`。它包含获批 logo SVG、16 角色配色、可移植配色引擎、40 个场景索引及视觉检查规则。应用于网站、应用、文档、幻灯片、图表和印刷物；明确指定的其他品牌或外部模板优先。
+
+## 影像与发布
+
+NASA 影像仅作为辅助背景，原始发布链接和完整署名见 [影像来源](05-imagery/sources.json)。SVG 标志和图形保持矢量，不以照片替代。
+
+站点标题、canonical 和 manifest 按 vi.spacelibre.cn 准备。提交 GitHub 不等于已配置 DNS、HTTPS 或部署该域名；发布时将此目录作为静态站点根目录。RGB 印刷应按实际输出配置转换并打样。
