@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.24 - 2026-10-15
+
+- Correct the source hashes in the Orbit Birth media manifest (`08-motion/manifest.json`): the `sourceSHA256` entries for `camera.js`, `planet-scene.js` and `three-intro.js` did not match the committed files, so `npm test` failed on a clean checkout of 1.5.23. The recorded hashes now match the scene sources exactly.
+- Verify: `npm ci`, `npm test` and `npm run check` pass at 1.5.24.
+
 ## 1.5.23 - 2026-10-15
 
 - Correct the logo metaphor in Orbit Birth: replace the extruded mechanical annulus and layered tunnel with a solid Earth, one tilted orbital path and a recognizable orbiting satellite.
