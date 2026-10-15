@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.32 - 2026-10-15
+
+- Stop the "Recommended Minimum Display Size" table from forcing a sideways scroll on phones. The sizing table kept the site-wide `white-space: nowrap` and wide right padding, and its caption carried a `min-width: 500px`, so the four-column table could not fit a phone viewport and pushed the page wider than the screen. On viewports up to 720px the table and its cells now wrap, the caption's minimum width is released, and the wrap padding is tightened.
+- Measured before and after on a narrow viewport: the table no longer exceeds the viewport width, so the page has no horizontal overflow.
+- Verify: `npm ci`, `npm test` (21 tests) and `npm run check` pass at 1.5.32.
+
 ## 1.5.31 - 2026-10-15
 
 - Stop the intro downloads from jumping to the top of the page on phones. The manual's mobile rule `nav { position:absolute; top:100%; ... }` (meant for the collapsed header menu) was hitting the player's `<nav class="downloads">`, pulling it out of the flow and pinning it near the page top. The download links are now a plain `<div>` in both the inline manual section and the standalone player, so the header menu rule can no longer reach them.
