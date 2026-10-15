@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.26 - 2026-10-15
+
+- Fix the broken stylesheet reference in the Orbit Birth player: `08-motion/index.html` had a malformed `<link>` tag (`<link</title> rel="stylesheet" href="player.css">`) introduced with the 1.5.25 i18n change, so `player.css` never loaded and the whole intro page rendered unstyled. The tag is a valid `link rel="stylesheet"` again and the layout is restored.
+- Verified the page structure after the fix: balanced tags, parseable DOM, and `player.css` served with HTTP 200 in a local run.
+- Verify: `npm ci`, `npm test` (21 tests) and `npm run check` pass at 1.5.26.
+
 ## 1.5.25 - 2026-10-15
 
 - Bring the 30-second Orbit Birth intro fully into the site-wide i18n framework: the player no longer ships its own language switcher, its own `08-motion/locales.json` catalogue or its own translation logic. It now loads `i18n-data.js` and `i18n.js` and reuses `window.t` / `window.spacelibreLocale`, so language is managed in one place for the manual and the intro alike.
