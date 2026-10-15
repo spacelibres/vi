@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.29 - 2026-10-15
+
+- Tighten the layout under the Orbit Birth player. The export button and the sound note now share one row aligned to opposite ends instead of stacking as two half-empty lines, and the downloads sit in their own group under a top divider; the three stacked rows no longer leave the right half of the card empty.
+- Verify: `npm ci`, `npm test` (21 tests) and `npm run check` pass at 1.5.29; a rendered page shows the export row and the download group filling the card width.
+
 ## 1.5.28 - 2026-10-15
 
 - Fix the self-drawn dropdowns (language, appearance, palette) that had reverted to the native `<select>` on the manual. The section observer selected its links with `document.querySelectorAll('nav a')`, and the intro downloads I added in 1.5.27 introduced a second `<nav class="downloads">` whose links have no fragment; `document.querySelector('')` then threw a `SyntaxError`, which aborted `app.js` before `buildCustomSelect` ran and left every dropdown as the platform control.

@@ -3,7 +3,7 @@
    there is one"), revalidating in the background so new releases still arrive.
    The cache name carries the release version, so a new release installs a new
    worker, repopulates the cache and drops the old one. */
-const CACHE = 'spacelibre-vi-v1.5.28';
+const CACHE = 'spacelibre-vi-v1.5.29';
 const PRECACHE = [
   './',
   'styles.css',
