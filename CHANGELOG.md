@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.5.27 - 2026-10-15
+
+- Stop embedding the intro in an iframe. The 30-second Orbit Birth section is now a native part of the manual page: the fixed-height frame (which caused an internal scrollbar) and the "打开片头播放器 ↗" link are gone, and the player markup, controls, downloads and notes sit directly in the section styled with the site tokens.
+- Share one player between the inline section and the standalone page. `08-motion/index.html` still opens the intro on its own, and both hosts load the same `three-player.js`, `three-intro.js`, `planet-scene.js`, `camera.js`, `scene.js` and `masters.js`; the manual adds the one `importmap` for the vendored Three.js.
+- Follow the manual's palette without a cross-document handshake. The manual exposes `window.SpacelibrePalette` and dispatches a `spacelibre-palette` event; the player reads it on start and updates on change. The shared locale comes from the same site-wide `i18n/` framework as before.
+- Resolve the planet texture from the module URL (`new URL('./textures/earth-blue-marble.jpg', import.meta.url)`) so the scene loads correctly from both the root page and `/08-motion/`. Update the recorded `planet-scene.js` hash in `08-motion/manifest.json` to match.
+- Allow `spacelibre-motion-source.zip` in the HTML reference check, since it is a build artifact like `spacelibre-svg-assets.zip`.
+- Verify: `npm ci`, `npm test` (21 tests) and `npm run check` pass at 1.5.27; every player asset returns HTTP 200 from the site root, and the manual page contains no iframe.
+
 ## 1.5.26 - 2026-10-15
 
 - Fix the broken stylesheet reference in the Orbit Birth player: `08-motion/index.html` had a malformed `<link>` tag (`<link</title> rel="stylesheet" href="player.css">`) introduced with the 1.5.25 i18n change, so `player.css` never loaded and the whole intro page rendered unstyled. The tag is a valid `link rel="stylesheet"` again and the layout is restored.

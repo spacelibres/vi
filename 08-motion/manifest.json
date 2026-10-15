@@ -10,7 +10,7 @@
   "audioPeak": 0.2892565131187439,
   "sourceSHA256": {
     "camera.js": "affd7d3e038ba8fbf6ff9b814bcc4d55007b92a523581239a4e60c1ff819fc4a",
-    "planet-scene.js": "eb76b045b99ec2dd4c7eede0fb9ed4efa5da2d63dcd662d4336d7e9e8afa79ea",
+    "planet-scene.js": "6143c547c6516659e0882d35eac6ed47250d23f4000604829a31c9cca139e4de",
     "three-intro.js": "58461f1ca9ef6810ca55443576bf635c052f41f9b191562fb96d74627fe3d547",
     "textures/earth-blue-marble.jpg": "fb67ac030214c1891994c8f976e7f6c9cd5b0f21586aba8567250781a4fe708e"
   },

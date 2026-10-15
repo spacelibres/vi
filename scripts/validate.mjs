@@ -17,7 +17,7 @@ for(const file of svgs){const text=fs.readFileSync(file,'utf8'),doc=new DOMParse
 
 // --- html references ---
 const doc=new DOMParser().parseFromString(html,'text/html');
-for(const e of doc.querySelectorAll('[src],[href]'))for(const a of ['src','href']){const ref=e.getAttribute(a);if(!ref||/^(?:https?:|#|blob:)/.test(ref))continue;const name=ref.split(/[?#]/)[0];if(name==='spacelibre-svg-assets.zip')continue;if(!fs.existsSync(name))throw Error('Missing resource '+name);}
+for(const e of doc.querySelectorAll('[src],[href]'))for(const a of ['src','href']){const ref=e.getAttribute(a);if(!ref||/^(?:https?:|#|blob:)/.test(ref))continue;const name=ref.split(/[?#]/)[0];if(['spacelibre-svg-assets.zip','spacelibre-motion-source.zip'].includes(name))continue;if(!fs.existsSync(name))throw Error('Missing resource '+name);}
 
 // --- secret exclusion ---
 for(const file of all.filter(p=>/\.(?:js|mjs|cjs|json|md|yml|yaml|html|svg|css)$/.test(p))){const text=fs.readFileSync(file,'utf8');if(/gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}/.test(text))throw Error('Credential-like value in '+file);}

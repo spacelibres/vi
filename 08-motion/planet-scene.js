@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 
+const TEXTURE_URL=new URL('./textures/earth-blue-marble.jpg',import.meta.url);
 const ease=x=>{x=Math.min(1,Math.max(0,x));return x*x*(3-2*x);};
 const vertex=`varying vec2 vUv;varying vec3 vNormal;varying vec3 vWorld;
 void main(){vUv=uv;vec4 world=modelMatrix*vec4(position,1.);vWorld=world.xyz;vNormal=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*world;}`;
@@ -35,7 +36,7 @@ export class PlanetScene {
   for(const side of [-1,1])for(const y of [-.07,0,.07]){const rail=new THREE.Mesh(new THREE.BoxGeometry(.45,.003,.016),this.silver);rail.position.set(side*.36,y,.012);this.satellite.add(rail);}
   this.scene.add(new THREE.AmbientLight(0xffffff,.4));const sun=new THREE.DirectionalLight(0xffffff,3);sun.position.set(-5,3,6);this.scene.add(sun);
   const positions=[],sizes=1200;for(let i=0;i<sizes;i++){const a=i*2.399963,b=Math.acos(1-2*(i+.5)/sizes);positions.push(85*Math.sin(b)*Math.cos(a),85*Math.cos(b),85*Math.sin(b)*Math.sin(a));}const stars=new THREE.BufferGeometry();stars.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));this.starMaterial=new THREE.PointsMaterial({color:'#c9d6ed',size:.045,transparent:true,opacity:.55});this.scene.add(new THREE.Points(stars,this.starMaterial));
-  this.ready=new THREE.TextureLoader().loadAsync('textures/earth-blue-marble.jpg').then(texture=>{texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=8;this.texture=texture;this.surface.uniforms.earth.value=texture;});
+  this.ready=new THREE.TextureLoader().loadAsync(TEXTURE_URL).then(texture=>{texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=8;this.texture=texture;this.surface.uniforms.earth.value=texture;});
  }
  setPalette(p,white){this.white=white;this.scene.background=new THREE.Color(p.deep);this.surface.uniforms.mono.value=white?1:0;this.surface.uniforms.outlineTint.value.set(white?'#ffffff':p.planetOnDark);this.atmosphere.uniforms.tint.value.set(white?'#ffffff':'#489cff');this.orbitMaterial.color.set(white?'#ffffff':p.primaryOnDark);this.glowMaterial.color.copy(this.orbitMaterial.color);this.panelMaterial.color.set(white?'#ffffff':p.primaryOnDark);this.starMaterial.color.set(white?'#ffffff':p.surface);}
  update(t,p){
