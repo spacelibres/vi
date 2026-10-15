@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.25 - 2026-10-15
+
+- Bring the 30-second Orbit Birth intro fully into the site-wide i18n framework: the player no longer ships its own language switcher, its own `08-motion/locales.json` catalogue or its own translation logic. It now loads `i18n-data.js` and `i18n.js` and reuses `window.t` / `window.spacelibreLocale`, so language is managed in one place for the manual and the intro alike.
+- Move every intro string into the shared catalogue (`i18n/*.json`), keyed by its Chinese source text like the rest of the site, so all 22 languages cover the player through the same data. The shared `语言` and `note` entries are reused unchanged; the palette `版本` label keeps its own `主色变体` key so it does not collide with the existing site string.
+- Embedded in the manual the player follows the parent's choice (the manual sets `?lang=` on the frame); opened on its own it auto-detects the browser language exactly like the rest of the site. The standalone switcher and the private catalogue are gone.
+- Rewrite the two affected tests: the motion locale test now asserts the player has no private catalogue and that every site language covers the player's strings, and the motion cache test covers the player markup and code instead of the removed catalogue. `sw.js` continues to revalidate `08-motion/` without a separate locale file.
+- Verify: `npm ci`, `npm test` (21 tests) and `npm run check` pass at 1.5.25.
+
 ## 1.5.24 - 2026-10-15
 
 - Correct the source hashes in the Orbit Birth media manifest (`08-motion/manifest.json`): the `sourceSHA256` entries for `camera.js`, `planet-scene.js` and `three-intro.js` did not match the committed files, so `npm test` failed on a clean checkout of 1.5.23. The recorded hashes now match the scene sources exactly.

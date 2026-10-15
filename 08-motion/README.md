@@ -14,9 +14,9 @@ The planet is opaque during the physical sequence. Only the explicit closing tra
 
 ## Runtime and color
 
-`planet-scene.js` builds the solid globe, atmospheric shell, satellite and single tilted orbit. `camera.js` defines the orbit and camera poses, including clearance from the surface and the satellite close approach. `three-intro.js` renders WebGL and composites the exact approved closing SVG. `three-player.js` handles the 22 translated interfaces, theme handshake, audio, timeline and guarded browser export.
+`planet-scene.js` builds the solid globe, atmospheric shell, satellite and single tilted orbit. `camera.js` defines the orbit and camera poses, including clearance from the surface and the satellite close approach. `three-intro.js` renders WebGL and composites the exact approved closing SVG. `three-player.js` handles the theme handshake, audio, timeline and guarded browser export; its interface strings come from the site-wide `i18n/` framework rather than a private catalogue.
 
-The vendored Three.js 0.186.1 runtime and NASA surface texture work without CDN access. Run `python -m http.server 8765` from the repository/package root and open `/08-motion/index.html`. The parent VI manual shares its language and palette with the player. Native-speaker proofreading has not been performed.
+The vendored Three.js 0.186.1 runtime and NASA surface texture work without CDN access. Run `python -m http.server 8765` from the repository/package root and open `/08-motion/index.html`. The player shares the site's language and palette: it loads `i18n-data.js` and `i18n.js`, has no language switcher of its own, and follows the manual's choice (the parent sets `?lang=` on the frame). Opened on its own it auto-detects the browser language exactly like the rest of the site. Native-speaker proofreading has not been performed.
 
 Natural Earth color is preserved in full-color mode. The orbit, interface and final identity follow selected VI roles. The final full-color planet uses the auxiliary role; white mode produces an achromatic physical scene and an exact #FFFFFF planet, orbit and complete wordmark in the closing SVG. The final brand geometry is never reconstructed or distorted.
 
