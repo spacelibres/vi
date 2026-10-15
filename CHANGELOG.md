@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.31 - 2026-10-15
+
+- Stop the intro downloads from jumping to the top of the page on phones. The manual's mobile rule `nav { position:absolute; top:100%; ... }` (meant for the collapsed header menu) was hitting the player's `<nav class="downloads">`, pulling it out of the flow and pinning it near the page top. The download links are now a plain `<div>` in both the inline manual section and the standalone player, so the header menu rule can no longer reach them.
+- Release the `output` margin the manual sets globally: `#clock` inside the player now has `margin:0` instead of inheriting the site `output { margin-left:16px }`.
+- Measured on a 375px viewport: the download block is `position: static` and inside the player card (`withinPlayer=true`), where it was `position: absolute` at the page top before the fix.
+- Verify: `npm ci`, `npm test` (21 tests) and `npm run check` pass at 1.5.31.
+
 ## 1.5.30 - 2026-10-15
 
 - Remove the large empty band under the Orbit Birth player. The manual's global `section { margin-bottom: 96px }` rule was hitting the player's inner `<section id="three-pane">` and `<section id="movie-pane">` tab panels, adding almost 100px of blank space inside the card. The tab panels are now `<div>`s, and the remaining spacing between the export row and the downloads is a deliberate 16px group divider.
