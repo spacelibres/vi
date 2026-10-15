@@ -8,7 +8,7 @@ let toastTimer;function notify(message){const toast=document.querySelector('#toa
 async function writeClipboard(value){if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(value);return;}const input=document.createElement('textarea');input.value=value;input.style.position='fixed';input.style.opacity='0';document.body.append(input);input.select();const ok=document.execCommand('copy');input.remove();if(!ok)throw Error('copy');}
 async function copyColor(value){try{await writeClipboard(value);notify(t('已复制 {value}',{value}));}catch{notify(t('色值：{value} · 请手动复制',{value}));}}
 document.querySelectorAll('.swatch').forEach(button=>button.addEventListener('click',()=>copyColor(button.dataset.color)));
-const nav=[...document.querySelectorAll('nav a')];if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){nav.forEach(a=>a.classList.toggle('current',a.hash==='#'+entry.target.id));}});},{rootMargin:'-10% 0px -65% 0px'});nav.forEach(a=>{const section=document.querySelector(a.hash);if(section)observer.observe(section);});}
+const nav=[...document.querySelectorAll('#site-nav a')];if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){nav.forEach(a=>a.classList.toggle('current',a.hash==='#'+entry.target.id));}});},{rootMargin:'-10% 0px -65% 0px'});nav.forEach(a=>{const section=a.hash?document.querySelector(a.hash):null;if(section)observer.observe(section);});}
 // Extended palette relationships. Geometry of the approved logo stays fixed.
 const colorLab=document.querySelector('.color-lab');
 const picker=document.querySelector('#primary-picker');
