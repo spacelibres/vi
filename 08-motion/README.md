@@ -1,25 +1,33 @@
-# Orbit Birth 3D / 轨道诞生
+# Orbit Birth — Planet & Satellite
 
-The owner requested a Three.js 3D remake with close camera approaches and full multilingual support. This supersedes the flat video draft. Both final MP4s were recorded from the actual WebGL scene, then normalized to 1920×1080 / 30fps / exactly 30 seconds / H.264 yuv420p with fast-start metadata. The sound version contains original synthesized audio; the silent version has no audio track. No sampled music or voice is used.
+The approved metaphor is a planet and a satellite orbit. The physical scene is a solid Earth with a surface, atmosphere and day/night shading. The cinematic scene is not an extruded version of the logo's circular stroke.
 
-## Story and visual standard
+## Sequence
 
-0–6s: approach the planet ring surface and its beveled edge. 6–13s: track the approved orbit silhouette at close range. 13–22s: travel through layered three-dimensional trajectories. 22–27s: pull back and align the brand. 27–30s: hold the exact approved SVG lockup, without changing its paths or letterforms. Materials, lighting and depth belong to the authorized cinematic representation; they do not replace the flat official logo masters. White monochrome uses white material colors and neutral lights, ending with exact #FFFFFF foregrounds.
+- 0–7s: near-horizon approach, gradually pulling back from the globe.
+- 7–14s: reveal the planet and one tilted blue orbital path; a modeled satellite moves along that same closed path, with depth-buffer occlusion behind Earth.
+- 14–21s: approach the satellite in the foreground, with Earth filling the background, then pull away.
+- 21–27s: settle into the final composition, dissolve surface detail toward an auxiliary-color circular outline, and resolve to the original SVG geometry and wordmark.
+- 27–30s: hold the complete approved SVG lockup.
 
-## Files and offline playback
+The planet is opaque during the physical sequence. Only the explicit closing transition removes its interior. The satellite scale and orbital timing are artistic, not a scientific simulation.
 
-- `three-intro.js`: extruded annular planet, approved SVG orbit extrusion, physical materials, lighting, star field, 3D trajectories and exact final SVG composite.
-- `camera.js`: deterministic 30s closeup/flyby/traversal/pullback camera poses.
-- `three-player.js`: playback, seeking, palette/monochrome controls, original audio and native browser recording.
-- `locales.json`: complete UI dictionaries for all 22 website languages; no English fallback for the new intro UI. Arabic, Persian and Hebrew use RTL layout. Native-speaker proofreading remains unperformed.
-- `masters.js`, `scene.js`, `final-frame.svg`: preserve approved outline geometry for the closing brand frame. The standalone animated SVG is a vector reference; it does not simulate the physical 3D camera.
-- `vendor/`: pinned Three.js 0.186.1, required loaders/environment and MIT license. No CDN requests are needed.
-- `manifest.json`: media checksums, encoding metadata, full-decode verification and audio levels.
+## Runtime and color
 
-Run `python -m http.server 8765` from the repository or source package root, then open `/08-motion/index.html`. When embedded in the VI manual, the player receives the parent's language and palette. Standalone language and palette controls remain available.
+`planet-scene.js` builds the solid globe, atmospheric shell, satellite and single tilted orbit. `camera.js` defines the orbit and camera poses, including clearance from the surface and the satellite close approach. `three-intro.js` renders WebGL and composites the exact approved closing SVG. `three-player.js` handles the 22 translated interfaces, theme handshake, audio, timeline and guarded browser export.
 
-## Export
+The vendored Three.js 0.186.1 runtime and NASA surface texture work without CDN access. Run `python -m http.server 8765` from the repository/package root and open `/08-motion/index.html`. The parent VI manual shares its language and palette with the player. Native-speaker proofreading has not been performed.
 
-Choose a palette and color/white mode, then press the localized Export button. Keep the tab visible for the 30-second recording. The export freezes controls, renders the real Three.js camera sequence and includes original sound when the sound checkbox is enabled. MediaRecorder selects MP4 when available, otherwise WebM. Use FFmpeg to normalize browser output to delivery MP4 with 30fps, 30s duration, H.264, AAC and fast-start metadata. Browser record rate depends on device performance; the supplied normalized delivery files each contain 900 frames.
+Natural Earth color is preserved in full-color mode. The orbit, interface and final identity follow selected VI roles. The final full-color planet uses the auxiliary role; white mode produces an achromatic physical scene and an exact #FFFFFF planet, orbit and complete wordmark in the closing SVG. The final brand geometry is never reconstructed or distorted.
 
-The sound source is `orbit-birth-sound.m4a`, synthesized by `scripts/synth-intro.py`. It starts only after Play-with-sound or sound-enabled Export interaction. The static SVG poster and rendered MP4 offer alternatives where WebGL is unavailable. `npm run build` also creates `spacelibre-motion-source.zip` with the required local runtime and assets.
+NASA Blue Marble source and credits are in `textures/credits.json`, with a visible credit link in the player. The surface includes clouds; no NASA endorsement is implied.
+
+## Delivery and verification
+
+Both MP4s are 30s, 1920×1080, 30fps, 900 frames, H.264/yuv420p, fast-start MP4. The sound version includes original synthesized stereo audio; the silent version has no audio track. `manifest.json` records full-decode checks, hashes and measured audio levels, plus hashes of the exact camera, scene and texture used for the recording.
+
+Choose a palette, color/white mode and optional sound, then export. Keep the tab visible for the 30-second browser capture. Sound is captured only when enabled. Browser recording selects MP4 where supported and otherwise WebM; device frame timing may vary. Supplied delivery masters are normalized to 30fps. The near arc follows the approved lower-left to upper-right logo direction and is rendered after the planet depth pass, so Earth cannot incorrectly cover it. Camera movement stays near this logo-facing orientation.
+
+Use FFmpeg to reset timestamps, normalize fps, pad only the final hold when needed, trim to 30 seconds and encode H.264/AAC. `python scripts/verify-motion.py --ffmpeg <ffmpeg-path>` rechecks both masters without changing their provenance. After an actual new capture and normalization, use --record-new-master <raw-capture-file> to explicitly generate new provenance.
+
+`masters.js`, `scene.js` and `final-frame.svg` preserve approved SVG geometry for the ending. The standalone animated SVG and `scripts/render-intro.cjs` remain a flat vector reference, not the planet film. `npm run build` creates the complete `spacelibre-motion-source.zip`. Temporary browser captures and review frames do not ship.

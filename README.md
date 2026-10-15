@@ -45,6 +45,10 @@ NASA 影像仅作为辅助背景，原始发布链接和完整署名见 [影像�
 
 站点标题、canonical 和 manifest 按 vi.spacelibre.cn 准备。提交 GitHub 不等于已配置 DNS、HTTPS 或部署该域名；发布时将此目录作为静态站点根目录。RGB 印刷应按实际输出配置转换并打样。
 
-## 品牌片头 / Orbit Birth 3D
+## 品牌片头 / Orbit Birth — Planet & Satellite
 
-[30 秒 3D 片头播放器](08-motion/index.html)使用离线 Three.js/WebGL，提供抵近星球圆环、掠过轨道边缘、穿行航迹与拉远收束的镜头。完整品牌字标使用确认过的 SVG 轮廓。播放器支持全部 22 种语言，跟随网站语言与配色，并可录制当前配色的 30 秒视频。另附已渲染的 1080p 配乐与无声 MP4。[源码与制作说明](08-motion/README.md)解释了 3D 叙事、源文件与导出方式。
+[30 秒 Three.js 片头](08-motion/index.html)：从地球近地平线拉远，看见卫星沿蓝色轨道绕行，中段跟随卫星抵近地球，最后将地表提炼为圆形轮廓，衔接原始 spacelibre SVG 标志。圆形部分表达星球，蓝色部分表达卫星轨道。
+
+提供 1920×1080 / 30fps / 30 秒的声音与无声 MP4，以及完整离线源码包。播放器接入网站全部 22 种语言和主题配色。实体地球保留 NASA 素材自然色，轨道与最终全彩标志遵循 VI 色彩角色；白色版保持无辅助色的单色收尾。
+
+素材来源和署名见 [texture credits](08-motion/textures/credits.json)。运行 `python scripts/verify-motion.py --ffmpeg <ffmpeg-path>` 可复验媒体时长、完整解码、音轨和校验值。翻译尚未经过母语审校；卫星比例和运行速度为视觉叙事服务。

@@ -3,7 +3,7 @@
    there is one"), revalidating in the background so new releases still arrive.
    The cache name carries the release version, so a new release installs a new
    worker, repopulates the cache and drops the old one. */
-const CACHE = 'spacelibre-vi-v1.5.22';
+const CACHE = 'spacelibre-vi-v1.5.23';
 const PRECACHE = [
   './',
   'styles.css',
@@ -63,6 +63,17 @@ async function respond(request) {
   const cache = await caches.open(CACHE);
   const key = cacheKey(request.url);
   const cached = await cache.match(key);
+  const path = new URL(request.url).pathname;
+  // A corrected film and its scene/locales must arrive together; a cached
+  // former release must not keep showing an older interpretation of the logo.
+  if (path.includes('/08-motion/') || path.endsWith('/spacelibre-motion-source.zip')) {
+    try {
+      const response = await fetch(request, { cache: 'no-cache' });
+      if (!response.ok) { if (cached) return cached; return response; }
+      if (!request.headers?.has('range')) await put(cache, key, response.clone());
+      return response;
+    } catch (error) { if (cached) return cached; throw error; }
+  }
   const network = fetch(request).then((response) => { put(cache, key, response.clone()); return response; });
   if (cached) { network.catch(() => {}); return cached; }
   try { return await network; } catch (error) {

@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.5.23 - 2026-10-15
+
+- Correct the logo metaphor in Orbit Birth: replace the extruded mechanical annulus and layered tunnel with a solid Earth, one tilted orbital path and a recognizable orbiting satellite.
+- Use a locally bundled NASA Blue Marble surface, thin atmosphere and directional day/night shading. Add a planet-horizon approach, satellite foreground pass and a registered surface-to-outline transition into the unchanged approved SVG lockup.
+- Match the approved lower-left to upper-right orbit direction and near-side arc; render Earth's depth before the transparent orbit so the foreground segment remains visible across the planet. Keep the camera near the logo-facing orientation.
+- Preserve natural Earth colors in full-color scenes while the orbit and final identity follow the selected palette. White mode uses an achromatic physical scene and an exact one-ink white closing mark.
+- Update all 22 intro languages and the manual description to the planet/satellite sequence, and include visible NASA attribution plus source metadata.
+- Revalidate motion assets and the source download before using cached copies, preventing an older scene or translation from remaining visible after an update; retain cached offline fallback.
+- Re-record both 30-second 1080p H.264 masters from the real Three.js scene. Verify complete 900-frame decoding, AAC sound levels, camera clearance, orbit closure, continuous camera movement, final geometry and source/media checksums. Native-speaker proofreading remains unperformed; satellite size and orbital timing are artistic, not a physical simulation.
+
 ## 1.5.22 - 2026-10-14
 
 - Add Orbit Birth 3D: a Three.js/WebGL 30-second 1080p brand intro with planet-surface closeups, orbital flybys, trajectory traversal and an intact final SVG identity.

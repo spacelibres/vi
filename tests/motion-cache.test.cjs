@@ -1,0 +1,6 @@
+const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
+async function run(url,offline=false){let requestOptions;const cached=new Response('old scene');const context={URL,self:{location:{origin:'https://vi.test',href:'https://vi.test/sw.js'},addEventListener(){}},caches:{open:async()=>({match:async()=>cached,put:async()=>{}})},fetch:async(r,options)=>{requestOptions=options;if(offline)throw Error('offline');return new Response('new scene');}};vm.createContext(context);vm.runInContext(fs.readFileSync('sw.js','utf8'),context);const response=await context.respond({url,method:'GET'});return {body:await response.text(),requestOptions};}
+test('motion code, translations and source downloads prefer current network data over a cached old release',async()=>{
+ for(const path of ['08-motion/camera.js','08-motion/locales.json','spacelibre-motion-source.zip']){const result=await run('https://vi.test/'+path);assert.equal(result.body,'new scene');assert.equal(result.requestOptions.cache,'no-cache');}
+});
+test('motion resources fall back to their cached asset while offline',async()=>{assert.equal((await run('https://vi.test/08-motion/camera.js',true)).body,'old scene');});

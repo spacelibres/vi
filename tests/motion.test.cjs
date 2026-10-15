@@ -16,6 +16,7 @@ test('final lockup preserves every approved path and the original circle geometr
 });
 test('sound and silent delivery masters match the verified media manifest',()=>{
  const crypto=require('node:crypto'),manifest=JSON.parse(fs.readFileSync('08-motion/manifest.json','utf8'));
+ for(const [file,hash] of Object.entries(manifest.sourceSHA256||{}))assert.equal(crypto.createHash('sha256').update(fs.readFileSync('08-motion/'+file)).digest('hex'),hash,'recording must match its scene source');
  for(const media of manifest.media){const data=fs.readFileSync('08-motion/'+media.file);assert.equal(crypto.createHash('sha256').update(data).digest('hex'),media.sha256);assert.equal(data.subarray(4,8).toString(),'ftyp');assert.equal(media.frameCount,media.durationSeconds*media.fps);}
 });
 test('the early planet occlusion shares the visible orbit reveal mask',()=>{

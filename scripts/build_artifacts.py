@@ -7,7 +7,7 @@ with zipfile.ZipFile(root/'spacelibre-svg-assets.zip','w',zipfile.ZIP_DEFLATED) 
 if (root/'08-motion').exists():
  with zipfile.ZipFile(root/'spacelibre-motion-source.zip','w',zipfile.ZIP_DEFLATED) as z:
   motion=[p for p in (root/'08-motion').rglob('*') if p.is_file()]
-  dependencies=[root/'skills/spacelibre-vi/assets/theme-engine.js',root/'icons/favicon.svg']
+  dependencies=[root/'skills/spacelibre-vi/assets/theme-engine.js',root/'icons/favicon.svg',root/'scripts/verify-motion.py']
   for p in sorted(motion+dependencies):z.write(p,'spacelibre-motion/'+p.as_posix())
 with zipfile.ZipFile(out/f'spacelibre-vi-{version}.zip','w',zipfile.ZIP_DEFLATED) as z:
  for p in sorted(root.rglob('*')):

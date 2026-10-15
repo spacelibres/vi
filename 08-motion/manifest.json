@@ -1,17 +1,24 @@
 {
-  "title": "Orbit Birth 3D",
+  "title": "Orbit Birth: Planet and Satellite",
   "renderer": "Three.js 0.186.1 / WebGL",
+  "concept": "Solid Earth, orbiting satellite and blue orbital trajectory; exact approved SVG closing",
   "palette": "01-electric-orbit",
   "originalAudio": true,
   "verifiedFullDecode": true,
   "localeCount": 22,
-  "audioRMS": 0.09079120308160782,
-  "audioPeak": 0.28925976157188416,
+  "audioRMS": 0.09079947776480028,
+  "audioPeak": 0.2892565131187439,
+  "sourceSHA256": {
+    "camera.js": "b0f8824da608f9f238d56e820c0e36db1898116b840239413ad7376fa3a81f89",
+    "planet-scene.js": "42eadfd3e6e5a8307fd74eebd153ce89bee6fa27101654cd3aae995249351bdd",
+    "three-intro.js": "e8e007017a3f0b25fe47bbab65fe2a0a5b61c5881f4931b0e1e6527fec058162",
+    "textures/earth-blue-marble.jpg": "fb67ac030214c1891994c8f976e7f6c9cd5b0f21586aba8567250781a4fe708e"
+  },
   "media": [
     {
       "file": "spacelibre-orbit-birth-3d-1080p.mp4",
-      "sha256": "358164bd57cc8681c50512807dfff7790d9bca1c2943bd638e80a70f38f9d5a5",
-      "bytes": 14584969,
+      "sha256": "3512a814cfe7d2fe6dea79f750f7502c7cfa62ca638a10bd05e2bad5e63bf2ae",
+      "bytes": 13605298,
       "durationSeconds": 30,
       "width": 1920,
       "height": 1080,
@@ -22,8 +29,8 @@
     },
     {
       "file": "spacelibre-orbit-birth-3d-silent-1080p.mp4",
-      "sha256": "6402b8d6ed8f8fb832325a1d9e7359eaa187fb78d9a5fc178823cf93ec3c70c5",
-      "bytes": 13854629,
+      "sha256": "4a8bb90968a4f67f52e21d8b830c749a7a9db3c69d94943f4199fc2d5a1d7a79",
+      "bytes": 12869844,
       "durationSeconds": 30,
       "width": 1920,
       "height": 1080,
@@ -32,5 +39,10 @@
       "videoCodec": "H.264",
       "audioCodec": null
     }
-  ]
+  ],
+  "rawCapture": {
+    "file": "spacelibre-orbit-birth-3d-recording (2).mp4",
+    "sha256": "fe960e14f251ee53eb31818afb945c9e6e6f42759ed54d0dbc971af721c3317b",
+    "bytes": 11528507
+  }
 }
