@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.30 - 2026-10-15
+
+- Remove the large empty band under the Orbit Birth player. The manual's global `section { margin-bottom: 96px }` rule was hitting the player's inner `<section id="three-pane">` and `<section id="movie-pane">` tab panels, adding almost 100px of blank space inside the card. The tab panels are now `<div>`s, and the remaining spacing between the export row and the downloads is a deliberate 16px group divider.
+- Measured in a headless browser: the player card drops from 763px to 683px tall, with the stray 96px margin gone.
+- Verify: `npm ci`, `npm test` (21 tests) and `npm run check` pass at 1.5.30.
+
 ## 1.5.29 - 2026-10-15
 
 - Tighten the layout under the Orbit Birth player. The export button and the sound note now share one row aligned to opposite ends instead of stacking as two half-empty lines, and the downloads sit in their own group under a top divider; the three stacked rows no longer leave the right half of the card empty.
