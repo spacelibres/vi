@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.34 - 2026-10-16
+
+- Fix the language, appearance and palette dropdowns staying white in dark mode. The inline 3-D intro's `setPalette` wrote `--ink`, `--surface`, `--primary`, `--border` and `--card` onto `<html>` from its own light palette. `--card` is a site-wide token backing every dropdown, card and panel, so as soon as the player initialised it overwrote the dark value chosen by `applyGlobalTheme` with a light one, and the dropdowns rendered white until something re-applied the site theme. The player's private tokens are now namespaced `--motion-*` in `08-motion/three-player.js` and `08-motion/player.css`, so they can no longer collide with the manual's tokens; the standalone player is themed exactly as before.
+- Give the site-wide tokens real CSS defaults and a `@media (prefers-color-scheme: dark)` block in `styles.css`. Previously `--card`, `--panel`, `--chip`, `--photo-base` and the `--theme-*` set had no defaults at all and existed only once `app.js` ran, so before JavaScript executed (or when it was blocked, slow or failed) every card, panel and control fell back to `var(--card,#fff)` - white - regardless of the operating-system scheme. The page now follows the system scheme from the first paint, and `app.js` still replaces the values with the chosen palette.
+- Add a regression test in `tests/motion.test.cjs`: the embedded player must write only `--motion-*` tokens, and `player.css` must not consume the bare site token names.
+- Verified in headless Chrome at 1.5.34: with dark mode selected, `--card` stays `#1F2932` after the player initialises and both the language and palette dropdowns render `rgb(31,41,50)`; in light mode they render `rgb(252,253,254)`. With `app.js` withheld, the first paint already follows the simulated system scheme (dark: body `#071424`; light: body `#F2F6FC`). The standalone `08-motion/index.html` still themes its buttons and stage from the namespaced tokens.
+- Verify: `npm ci`, `npm test` (24 tests) and `npm run check` pass at 1.5.34.
+
 ## 1.5.33 - 2026-10-16
 
 - Fix the colour-lab summary that stayed in Chinese no matter which language was selected. `generatePalette` passed its two templates to `t()` inside a `mode==='auto' ? … : …` ternary, and the catalogue extractor only matched a quoted literal immediately after `t(`, so neither template ever entered `i18n/zh-CN.json`. `t()` therefore returned the raw Chinese key, and only the `{relation}` placeholder came out translated. The two templates are now passed as plain literals, and the existing wording is preserved by substituting `{relation}` afterwards.

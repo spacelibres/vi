@@ -24,3 +24,21 @@ test('the early planet occlusion shares the visible orbit reveal mask',()=>{
  const cut=doc.querySelector('#planet-occlusion path');assert.equal(cut.getAttribute('mask'),'url(#orbit-reveal)');
  const front=[...doc.querySelectorAll('path')].find(n=>n.getAttribute('d')===masters.orbit&&!n.closest('mask'));assert.equal(front.getAttribute('mask'),cut.getAttribute('mask'));assert.equal(front.getAttribute('opacity'),cut.getAttribute('opacity'));
 });
+test('the embedded player never overwrites the manual\'s site-wide tokens',()=>{
+ // setPalette used to write --ink/--surface/--primary/--border/--card onto
+ // <html>; --card is a site token, so in dark mode the player forced it back to
+ // its light value and the language/palette dropdowns stayed white.
+ const player=fs.readFileSync('08-motion/three-player.js','utf8');
+ const writes=[...player.matchAll(/setProperty\('--'\+key,value\)/g)];
+ assert.equal(writes.length,1,'the palette write loop should appear exactly once');
+ for(const key of ['ink','surface','primary','border','card']){
+  assert.doesNotMatch(player,new RegExp("(?:^|[^a-z-])'"+key+"':"),'the player must not write the bare --'+key+' token');
+ }
+ // Both the player script and its stylesheet must use the --motion- namespace.
+ const css=fs.readFileSync('08-motion/player.css','utf8');
+ for(const key of ['ink','surface','primary','border','card']){
+  assert.ok(css.includes('--motion-'+key),'player.css must define --motion-'+key);
+  assert.doesNotMatch(css,new RegExp('var\\(--'+key+'[,)]'),'player.css must not consume the bare --'+key+' token');
+ }
+ assert.match(player,/\{'motion-ink':p\.ink,'motion-surface':p\.surface,'motion-primary':p\.primaryOnLight,'motion-border':p\.line,'motion-card':p\.card\}/,'the player must write namespaced motion tokens');
+});
