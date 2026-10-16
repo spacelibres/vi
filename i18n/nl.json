@@ -235,7 +235,9 @@
     "原创合成音效 · 无旁白": "Origineel gesynthetiseerd geluid · zonder vertelling",
     "00:30 / 1080p / 30fps": "00:30 / 1080p / 30fps",
     "录制时请保持此标签页可见。": "Houd dit tabblad zichtbaar tijdens het opnemen.",
-    "spacelibre 3D 片头播放器": "spacelibre 3D-introspeler"
+    "spacelibre 3D 片头播放器": "spacelibre 3D-introspeler",
+    "自动推荐：{relation} · 已生成 16 个色彩角色，并自动适配浅色 / 深色背景。": "Slimme aanbeveling: {relation} · 16 kleurrollen gegenereerd en automatisch aangepast aan lichte / donkere achtergronden.",
+    "当前关系：{relation} · 已生成 16 个色彩角色，并自动适配浅色 / 深色背景。": "Huidige relatie: {relation} · 16 kleurrollen gegenereerd en automatisch aangepast aan lichte / donkere achtergronden."
   },
   "attr": {
     "24 像素标志": "24 px-logo",

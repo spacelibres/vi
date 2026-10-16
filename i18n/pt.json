@@ -235,7 +235,9 @@
     "原创合成音效 · 无旁白": "Som sintetizado original · sem narração",
     "00:30 / 1080p / 30fps": "00:30 / 1080p / 30fps",
     "录制时请保持此标签页可见。": "Mantenha esta aba visível durante a gravação.",
-    "spacelibre 3D 片头播放器": "Reprodutor da introdução 3D da spacelibre"
+    "spacelibre 3D 片头播放器": "Reprodutor da introdução 3D da spacelibre",
+    "自动推荐：{relation} · 已生成 16 个色彩角色，并自动适配浅色 / 深色背景。": "Recomendação inteligente: {relation} · 16 papéis de cor gerados e ajustados automaticamente a fundos claros / escuros.",
+    "当前关系：{relation} · 已生成 16 个色彩角色，并自动适配浅色 / 深色背景。": "Relação atual: {relation} · 16 papéis de cor gerados e ajustados automaticamente a fundos claros / escuros."
   },
   "attr": {
     "24 像素标志": "Logotipo de 24 pixels",

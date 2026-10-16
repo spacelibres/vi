@@ -235,7 +235,9 @@
     "原创合成音效 · 无旁白": "Âm thanh tổng hợp nguyên bản · không lời dẫn",
     "00:30 / 1080p / 30fps": "00:30 / 1080p / 30fps",
     "录制时请保持此标签页可见。": "Giữ thẻ này hiển thị trong khi ghi.",
-    "spacelibre 3D 片头播放器": "Trình phát đoạn mở đầu 3D spacelibre"
+    "spacelibre 3D 片头播放器": "Trình phát đoạn mở đầu 3D spacelibre",
+    "自动推荐：{relation} · 已生成 16 个色彩角色，并自动适配浅色 / 深色背景。": "Gợi ý thông minh: {relation} · Đã tạo 16 vai trò màu và tự động thích ứng nền sáng / tối.",
+    "当前关系：{relation} · 已生成 16 个色彩角色，并自动适配浅色 / 深色背景。": "Quan hệ hiện tại: {relation} · Đã tạo 16 vai trò màu và tự động thích ứng nền sáng / tối."
   },
   "attr": {
     "24 像素标志": "Logo 24 pixel",

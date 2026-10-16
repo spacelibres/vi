@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.5.33 - 2026-10-16
+
+- Fix the colour-lab summary that stayed in Chinese no matter which language was selected. `generatePalette` passed its two templates to `t()` inside a `mode==='auto' ? … : …` ternary, and the catalogue extractor only matched a quoted literal immediately after `t(`, so neither template ever entered `i18n/zh-CN.json`. `t()` therefore returned the raw Chinese key, and only the `{relation}` placeholder came out translated. The two templates are now passed as plain literals, and the existing wording is preserved by substituting `{relation}` afterwards.
+- Add both keys to the base catalogue and to all 22 locales, keeping the `{relation}` placeholder and the existing tone of each language, and rebuild `i18n-data.js`.
+- Broaden `scripts/extract-i18n.mjs` so a `t()` first argument is scanned in full (ternaries, double-quoted strings and literal arrays included) and so the inline motion player (`08-motion/index.html`, `08-motion/three-player.js`) is covered too; previously a refresh would silently drop 21 keys.
+- Add `tests/i18n-coverage.test.cjs`: it asserts every CJK literal passed to `t()` in `app.js`/`08-motion/three-player.js` exists in the base catalogue, and that the colour-lab summary is not hidden inside a `t()` ternary again.
+- Verified in headless Chrome at `?lang=` for zh-CN, en, vi, ja, ar, ru and zh-TW: the summary now renders fully in each language for both the "current relation" and "smart pick" cases, with no leftover Chinese; a screenshot of the Vietnamese colour lab confirms it.
+- Verify: `npm ci`, `npm test` (23 tests) and `npm run check` pass at 1.5.33.
+
 ## 1.5.32 - 2026-10-15
 
 - Stop the "Recommended Minimum Display Size" table from forcing a sideways scroll on phones. The sizing table kept the site-wide `white-space: nowrap` and wide right padding, and its caption carried a `min-width: 500px`, so the four-column table could not fit a phone viewport and pushed the page wider than the screen. On viewports up to 720px the table and its cells now wrap, the caption's minimum width is released, and the wrap padding is tightened.
